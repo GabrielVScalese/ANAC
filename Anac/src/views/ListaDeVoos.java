@@ -31,6 +31,8 @@ public class ListaDeVoos extends JFrame {
 	private JTextField txtIndice;
 	private JTextField txtNumero;
 	private JButton btnProxVoo;
+	private JButton btnAnteVoo;
+	private JButton btnAnteAero;
 	private DadosAeroporto dadosAtual;
 	private Destino destinoAtual;
 	private ListaAeroportos listaAeroportos;
@@ -173,8 +175,8 @@ public class ListaDeVoos extends JFrame {
 		lblNewLabel_3.setBounds(340, 24, 204, 14);
 		panel_1.add(lblNewLabel_3);
 		
-		JButton btnNewButton = new JButton("Aeroporto Anterior");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		btnAnteAero = new JButton("Aeroporto Anterior");
+		btnAnteAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try
@@ -197,12 +199,12 @@ public class ListaDeVoos extends JFrame {
 				{}
 			}
 		});
-		btnNewButton.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnNewButton.setBounds(41, 176, 250, 23);
-		panel_1.add(btnNewButton);
+		btnAnteAero.setFont(new Font("Georgia", Font.PLAIN, 11));
+		btnAnteAero.setBounds(41, 176, 250, 23);
+		panel_1.add(btnAnteAero);
 		
-		JButton btnNewButton_1 = new JButton("V\u00F4o Anterior");
-		btnNewButton_1.addMouseListener(new MouseAdapter() {
+		btnAnteVoo = new JButton("V\u00F4o Anterior");
+		btnAnteVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try
@@ -221,12 +223,11 @@ public class ListaDeVoos extends JFrame {
 				}
 				catch (Exception error)
 				{}
-				
 			}
 		});
-		btnNewButton_1.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnNewButton_1.setBounds(340, 176, 204, 23);
-		panel_1.add(btnNewButton_1);
+		btnAnteVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
+		btnAnteVoo.setBounds(340, 176, 204, 23);
+		panel_1.add(btnAnteVoo);
 	}
 	
 	protected void initialize() throws Exception
@@ -285,10 +286,24 @@ public class ListaDeVoos extends JFrame {
 	{
 		try
 		{
+			btnAnteAero.setEnabled(true);
+			btnProxVoo.setEnabled(true);
+			btnAnteVoo.setEnabled(true);
 			txtCidade.setText(dadosAtual.getNome());
 			txtCodigo.setText(dadosAtual.getCodigo());
 			txtIndice.setText("" + destinoAtual.getIndice());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
+			
+			if (destinoAtual.equals(listaAeroportos.getDestinoDoFim(dadosAtual.getCodigo())))
+				btnProxVoo.setEnabled(false);
+			
+			if (destinoAtual.equals(listaAeroportos.getDestinoDoInicio(dadosAtual.getCodigo())))
+			{
+				btnAnteVoo.setEnabled(false);
+			}
+			
+			if (dadosAtual.equals(listaAeroportos.getDadosDoInicio()))
+				btnAnteAero.setEnabled(false);
 		}
 		catch (Exception e)
 		{
