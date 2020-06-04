@@ -173,6 +173,7 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         {
             No guardado = this.primeiro;
             this.primeiro = guardado.getProx();
+            this.primeiro.setAnte(null);
             return;
         }
 
@@ -182,6 +183,7 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
             if (aux.getProx().getDestino().getNumeroVoo() == numeroDoVoo)
             {
                 No guardado = aux.getProx().getProx();
+                guardado.setAnte(aux);
                 aux.setProx(guardado);
                 break;
             }

@@ -406,6 +406,31 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
 
         return false;
     }
+    
+    public boolean tem (String codigo) throws Exception
+    {
+    	 if (codigo == null)
+             throw new Exception("Parametro ausente");
+
+         No aux = this.primeiro;
+
+         while (aux != null)
+         {
+             if (aux.getDados() == null)
+                 aux = aux.getProx();
+             else
+             {
+                 if (aux.getDados().getCodigo().equals(codigo))
+                 {
+                     return true;
+                 }
+                 else
+                     aux = aux.getProx();
+             }
+         }
+
+         return false;
+    }
 
     public Object clone ()
     {
