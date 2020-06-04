@@ -31,6 +31,8 @@ public class CadastroDeAeroporto extends JFrame {
 	private JTextField txtCodigo2;
 	private DadosAeroporto dadosAtual;
 	private ListaAeroportos listaAeroportos;
+	private JButton btnProxAero;
+	private JButton btnAnteAero;
 
 	/**
 	 * Launch the application.
@@ -148,7 +150,7 @@ public class CadastroDeAeroporto extends JFrame {
 		txtCodigo2.setBounds(489, 93, 86, 20);
 		panel_1.add(txtCodigo2);
 		
-		JButton btnProxAero = new JButton("Pr\u00F3ximo Aeroporto");
+		btnProxAero = new JButton("Pr\u00F3ximo Aeroporto");
 		btnProxAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -167,8 +169,8 @@ public class CadastroDeAeroporto extends JFrame {
 		btnProxAero.setBounds(334, 131, 241, 23);
 		panel_1.add(btnProxAero);
 		
-		JButton btnAeroportoanterior = new JButton("AeroportoAnterior");
-		btnAeroportoanterior.addMouseListener(new MouseAdapter() {
+		btnAnteAero = new JButton("Aeroporto Anterior");
+		btnAnteAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try
@@ -189,9 +191,9 @@ public class CadastroDeAeroporto extends JFrame {
 				{}
 			}
 		});
-		btnAeroportoanterior.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnAeroportoanterior.setBounds(334, 165, 241, 23);
-		panel_1.add(btnAeroportoanterior);
+		btnAnteAero.setFont(new Font("Georgia", Font.PLAIN, 11));
+		btnAnteAero.setBounds(334, 165, 241, 23);
+		panel_1.add(btnAnteAero);
 	}
 
 	
@@ -250,8 +252,18 @@ public class CadastroDeAeroporto extends JFrame {
 	{
 		try
 		{
+			btnProxAero.setEnabled(true);
+			btnAnteAero.setEnabled(true);
 			txtCidade2.setText(dadosAtual.getNome());
 			txtCodigo2.setText(dadosAtual.getCodigo());
+			
+			if (dadosAtual.equals(listaAeroportos.getDadosDoFim()))
+				btnProxAero.setEnabled(false);
+			
+			if (dadosAtual.equals(listaAeroportos.getDadosDoInicio()))
+			{
+				btnAnteAero.setEnabled(false);
+			}
 		}
 		catch (Exception e)
 		{
