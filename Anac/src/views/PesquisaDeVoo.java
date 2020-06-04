@@ -54,7 +54,7 @@ public class PesquisaDeVoo extends JFrame {
 	 * Create the frame.
 	 */
 	public PesquisaDeVoo() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 562, 313);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -222,13 +222,34 @@ public class PesquisaDeVoo extends JFrame {
 			
 			dadosAtual = listaAeroportos.getDadosDoInicio();
 			destinoAtual = listaAeroportos.getDestinoDoInicio(dadosAtual.getCodigo());
-			showFlight(codigo);
 		}
 		catch (Exception e)
 		{
 			System.out.print(e.getMessage());
 		}	
 	}
+	
+	protected boolean existsCode(String codigo) throws Exception
+	{
+		boolean ret = false;
+		try
+		{
+			initialize(codigo);
+			if (listaAeroportos.tem(codigo))
+			{
+				ret = true;
+			}
+			else
+			{
+				ret = false;;
+			}
+		}
+		catch (Exception e)
+		{}
+		
+		return ret;
+	}
+	
 	
 	protected void showFlight() throws Exception
 	{

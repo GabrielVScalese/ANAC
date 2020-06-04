@@ -120,9 +120,22 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				try
 				{
-					PesquisaDeVoo frame = new PesquisaDeVoo();
-			        frame.initialize(txtCodAero.getText());
-					frame.setVisible(true);
+					if (txtCodAero.getText().matches("[0-9]+") || txtCodAero.getText().length() != 3)
+					{
+						JOptionPane.showMessageDialog(null, "Código de aerorporto inválido!");
+					}
+					else
+					{
+						PesquisaDeVoo frame = new PesquisaDeVoo();
+						if (frame.existsCode(txtCodAero.getText()))
+						{
+							frame.setVisible(true);
+					        frame.initialize(txtCodAero.getText());
+					        frame.showFlight(txtCodAero.getText());
+						}
+						else
+							JOptionPane.showMessageDialog(null, "Código de aerorporto inexistente!");
+					}
 				}
 				catch (Exception error)
 				{}
@@ -160,9 +173,22 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				try
 				{
-					ExclusaoDeVoo frame = new ExclusaoDeVoo();
-					frame.setVisible(true);
-					frame.initialize(txtCodAero.getText());
+					if (txtCodAero.getText().matches("[0-9]+") || txtCodAero.getText().length() != 3)
+					{
+						JOptionPane.showMessageDialog(null, "Código de aerorporto inválido!");
+					}
+					else
+					{
+						ExclusaoDeVoo frame = new ExclusaoDeVoo();
+						if (frame.existsCode(txtCodAero.getText()))
+						{
+							frame.setVisible(true);
+					        frame.initialize(txtCodAero.getText());
+					        frame.showFlight();
+						}
+						else
+							JOptionPane.showMessageDialog(null, "Código de aerorporto inexistente!");
+					}
 				}
 				catch (Exception error)
 				{}
@@ -172,13 +198,4 @@ public class Principal extends JFrame {
 		btnExcluirVoo.setBounds(350, 126, 141, 23);
 		panel_2.add(btnExcluirVoo);
 	}
-	
-	
-	/*public boolean isValid ()
-	{
-		if (txtCodVoo.getText().matches("[0-9]+") && txtCodVoo.getText().length() > 3)
-			return false;
-		else
-			return true;
-	}*/
 }

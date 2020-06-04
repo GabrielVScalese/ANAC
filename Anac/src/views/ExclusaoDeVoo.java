@@ -55,7 +55,7 @@ public class ExclusaoDeVoo extends JFrame {
 	 * Create the frame.
 	 */
 	public ExclusaoDeVoo() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 588, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -173,7 +173,6 @@ public class ExclusaoDeVoo extends JFrame {
 						"Exclusão de Aluno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (result == JOptionPane.YES_NO_OPTION) {
 					try {
-						System.out.println(txtNumero.getText());
 						listaAeroportos.remova(codAero, Integer.parseInt(txtNumeroVoo.getText()));
 						destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
 						txtNumero.setText("");
@@ -235,14 +234,34 @@ public class ExclusaoDeVoo extends JFrame {
 			//dadosAtual = listaAeroportos.getDadosDoInicio();
 			codAero = codigoAeroporto;
 			destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
-			
-			showFlight();
 		}
 		catch (Exception e)
 		{
 			System.out.print(e.getMessage());
 		}	
 	}
+	
+	protected boolean existsCode(String codigo) throws Exception
+	{
+		boolean ret = false;
+		try
+		{
+			initialize(codigo);
+			if (listaAeroportos.tem(codigo))
+			{
+				ret = true;
+			}
+			else
+			{
+				ret = false;;
+			}
+		}
+		catch (Exception e)
+		{}
+		
+		return ret;
+	}
+	
 	
 	protected void showFlight() throws Exception
 	{
