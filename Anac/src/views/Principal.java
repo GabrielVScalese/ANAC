@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -93,12 +94,27 @@ public class Principal extends JFrame {
 		panel_2.add(btnCadastrarAeroporto);
 		
 		JButton btnBuscarVoo = new JButton("Buscar V\u00F4o");
+		btnBuscarVoo.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				try
+				{
+					PesquisaDeVoo frame = new PesquisaDeVoo();
+			        frame.initialize(txtCodVoo.getText());
+					frame.setVisible(true);
+				}
+				catch (Exception error)
+				{}
+			}
+		});
 		btnBuscarVoo.setEnabled(false);
 		btnBuscarVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
 		btnBuscarVoo.setBounds(350, 126, 141, 23);
 		panel_2.add(btnBuscarVoo);
 		
 		txtCodVoo = new JTextField();
+		txtCodVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
+		txtCodVoo.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCodVoo.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -115,4 +131,12 @@ public class Principal extends JFrame {
 		lblNewLabel_2.setBounds(161, 56, 179, 14);
 		panel_2.add(lblNewLabel_2);
 	}
+	
+	/*public boolean isValid ()
+	{
+		if (txtCodVoo.getText().matches("[0-9]+") && txtCodVoo.getText().length() > 3)
+			return false;
+		else
+			return true;
+	}*/
 }
