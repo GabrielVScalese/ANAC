@@ -7,12 +7,14 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         protected DadosAeroporto dados;
         protected ListaVoos lisVoos;
         protected No prox;
+        protected No ante;
 
-        public No (DadosAeroporto dados, ListaVoos lisVoos, No p)
+        public No (DadosAeroporto dados, ListaVoos lisVoos, No prox, No ante)
         {
             this.dados = dados;
             this.lisVoos = lisVoos;
-            this.prox = p;
+            this.prox = prox;
+            this.ante = ante;
         }
 
         public No (DadosAeroporto dados)
@@ -42,6 +44,11 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
             return this.prox;
         }
 
+        public No getAnte()
+        {
+        	return this.ante;
+        }
+        
         public void setDados (DadosAeroporto dados)
         {
             this.dados = dados;
@@ -56,6 +63,11 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         {
             this.prox = p;
         }
+        
+        public void setAnte (No ante)
+        {
+        	this.ante = ante;
+        }
     }
 
     protected No primeiro, ultimo;
@@ -65,7 +77,7 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         if (dados == null)
             throw new Exception ("Informacao ausente");
 
-        this.primeiro = new No (dados, lis, this.primeiro);
+        this.primeiro = new No (dados, lis, this.primeiro, this.primeiro);
 
         if (this.ultimo == null)
             this.ultimo = this.primeiro;
@@ -73,21 +85,22 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
 
     public void insiraNoFim (DadosAeroporto dados, ListaVoos lis) throws Exception
     {
-        if (dados == null)
+    	if (dados == null)
             throw new Exception ("Informacao ausente");
 
         if (this.ultimo == null)
         {
             No novo = new No (dados, lis);
             this.primeiro = novo;
+            this.primeiro.setAnte(null);
             this.ultimo = this.primeiro;
+            this.ultimo.setAnte(this.primeiro);
         }
         else
         {
-            No valor = new No (dados, lis);
+            No valor = new No (dados, lis, null, this.ultimo);
             this.ultimo.setProx(valor);
             this.ultimo = valor;
-            this.ultimo.setProx(null);
         }
     }
 
@@ -102,6 +115,22 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
     			    return aux.getProx().getDados();
     			else
     				return null;
+    		}
+    		
+    		aux = aux.getProx();
+    	}
+    	
+    	return null;
+    }
+    
+    public DadosAeroporto getAnteDados (DadosAeroporto dados) throws Exception
+    {
+    	No aux = this.primeiro;
+    	while (aux != null)
+    	{
+    		if (aux.getDados().equals(dados))
+    		{
+    			return aux.getAnte().getDados();
     		}
     		
     		aux = aux.getProx();
@@ -170,6 +199,27 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
 
         return null;
     }
+    
+    public Destino getDestinoDoFim (String codigo) throws Exception
+    {
+        if (codigo == null || codigo == "")
+            throw new Exception ("Codigo do aeroporto invalido");
+
+ 
+        No aux = this.primeiro;
+        while (aux != null)
+        {
+            if (aux.getDados().getCodigo().equals(codigo))
+            {
+                return aux.getVoos().getDoFim();
+            }
+
+            aux = aux.getProx();
+        }
+
+        return null;
+    }
+    
 
     public ListaVoos getLista (String codigo) throws Exception
     {
@@ -394,6 +444,20 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
     	{
     		ListaVoos lisVoos = getLista(codigo);
         	destinoProx = lisVoos.getProxDestino(destino);
+    	}
+    	catch (Exception e)
+    	{}
+    	
+    	return destinoProx;
+    }
+    
+    public Destino getAnteDestino (String codigo, Destino destino) throws Exception
+    {
+    	Destino destinoProx = null;
+    	try
+    	{
+    		ListaVoos lisVoos = getLista(codigo);
+        	destinoProx = lisVoos.getAnteDestino(destino);
     	}
     	catch (Exception e)
     	{}
