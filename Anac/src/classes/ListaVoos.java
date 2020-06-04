@@ -1,5 +1,7 @@
 package classes;
 
+import classes.ListaAeroportos.No;
+
 public class ListaVoos implements Cloneable // Lista contendo objeto Destino
 {
     protected class No
@@ -257,6 +259,23 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
             throw new Exception ("Lista esta vazia");
 
         return this.primeiro.getDestino();
+    }
+    
+    public Destino getProxDestino (Destino destino)
+    {
+    	No aux = this.primeiro;
+    	while (aux != null)
+    	{
+    		if (aux.getDestino().equals(destino))
+    		{
+    			if (aux.getProx() != null)
+    			   return aux.getProx().getDestino();
+    			else
+    				return null;
+    		}
+    	}
+    	
+    	return null;
     }
 
     public Destino getDoFim() throws Exception

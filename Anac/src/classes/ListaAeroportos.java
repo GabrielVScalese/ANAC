@@ -34,7 +34,7 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
 
         public ListaVoos getVoos()
         {
-            return lisVoos;
+            return this.lisVoos;
         }
 
         public No getProx ()
@@ -91,37 +91,122 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         }
     }
 
-    public String exibirVoos (String codigo) throws Exception
+    public DadosAeroporto getProxDados (DadosAeroporto dados) throws Exception
     {
-        if (codigo == null || codigo == "")
+    	No aux = this.primeiro;
+    	while (aux != null)
+    	{
+    		if (aux.getDados().equals(dados))
+    		{
+    			if (aux.getProx() != null)
+    			    return aux.getProx().getDados();
+    			else
+    				return null;
+    		}
+    		
+    		aux = aux.getProx();
+    	}
+    	
+    	return null;
+    }
+    
+    
+    public DadosAeroporto exibirAeroporto (String codigo) throws Exception
+    {
+    	if (codigo == null || codigo == "")
             throw new Exception ("Codigo do aeroporto invalido");
 
-        String ret = "{(";
+ 
         No aux = this.primeiro;
         while (aux != null)
         {
             if (aux.getDados().getCodigo().equals(codigo))
             {
-                ret = ret + aux.getVoos() + ")" + "}";
-                return ret;
+                return aux.getDados();
             }
 
             aux = aux.getProx();
         }
 
-        return "Nenhum voo disponivel";
+        return null;
+    }
+    
+    public ListaVoos exibirDestino (String codigo) throws Exception
+    {
+    	if (codigo == null || codigo == "")
+            throw new Exception ("Codigo do aeroporto invalido");
+
+ 
+        No aux = this.primeiro;
+        while (aux != null)
+        {
+            if (aux.getDados().getCodigo().equals(codigo))
+            {
+                return aux.getVoos();
+            }
+
+            aux = aux.getProx();
+        }
+
+        return null;
+    }
+    
+    public Destino getDestinoDoInicio (String codigo) throws Exception
+    {
+        if (codigo == null || codigo == "")
+            throw new Exception ("Codigo do aeroporto invalido");
+
+ 
+        No aux = this.primeiro;
+        while (aux != null)
+        {
+            if (aux.getDados().getCodigo().equals(codigo))
+            {
+                return aux.getVoos().getDoInicio();
+            }
+
+            aux = aux.getProx();
+        }
+
+        return null;
     }
 
+    public ListaVoos getLista (String codigo) throws Exception
+    {
+    	if (codigo == null || codigo == "")
+            throw new Exception ("Codigo do aeroporto invalido");
+
+ 
+        No aux = this.primeiro;
+        while (aux != null)
+        {
+            if (aux.getDados().getCodigo().equals(codigo))
+            {
+                return aux.getVoos();
+            }
+
+            aux = aux.getProx();
+        }
+
+        return null;
+    }
+    
+    
     public String toString ()
     {
-        String ret = "{";
+        String ret = "";
 
         No aux = this.primeiro;
 
         while (aux != null)
         {
             if (aux.getProx() != null)
-                ret = ret + "(" + aux.getDados() + aux.getVoos() + ")" + ", ";
+            {
+            	if (aux == this.primeiro)
+                    ret = ret + aux.getDados() + aux.getVoos() +  ", ";
+            	else
+            		ret = "\n" + ret + aux.getDados() + aux.getVoos() +  ", ";
+            }
             else
                 ret = ret + "(" + aux.getDados() + aux.getVoos() + ")";
 
@@ -293,15 +378,30 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
     public ListaAeroportos ()
     {}
 
-    public DadosAeroporto getDados() throws Exception
+    public DadosAeroporto getDadosDoInicio() throws Exception
     {
         if (this.ultimo == null && this.primeiro == null)
             throw new Exception ("Lista esta vazia");
 
         return this.primeiro.getDados();
     }
-
-    public DadosAeroporto getDoFim() throws Exception
+    
+    
+    public Destino getProxDestino (String codigo, Destino destino) throws Exception
+    {
+    	Destino destinoProx = null;
+    	try
+    	{
+    		ListaVoos lisVoos = getLista(codigo);
+        	destinoProx = lisVoos.getProxDestino(destino);
+    	}
+    	catch (Exception e)
+    	{}
+    	
+    	return destinoProx;
+    }
+    
+    public DadosAeroporto getDadosDoFim() throws Exception
     {
         if (this.ultimo == null && this.primeiro == null)
             throw new Exception ("Lista esta vazia");

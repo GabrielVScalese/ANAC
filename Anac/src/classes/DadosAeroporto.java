@@ -53,7 +53,7 @@ public class DadosAeroporto implements Cloneable // Armazena o nome da cidade e 
         if (!this.nome.equals(da.nome))
             return false;
 
-        if (this.codigo.equals(da.codigo))
+        if (!this.codigo.equals(da.codigo))
             return false;
 
         return true;
