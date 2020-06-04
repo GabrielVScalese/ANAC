@@ -8,11 +8,13 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
     {
         protected Destino destino;
         protected No prox;
+        protected No ante;
 
-        public No (Destino destino, No p)
+        public No (Destino destino, No p, No ante)
         {
             this.destino = destino;
             this.prox = p;
+            this.ante = ante;
         }
 
         public No (Destino destino)
@@ -30,6 +32,11 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         {
             return this.prox;
         }
+        
+        public No getAnte ()
+        {
+        	return this.ante;
+        }
 
         public void setDestino (Destino destino)
         {
@@ -40,38 +47,45 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         {
             this.prox = p;
         }
+        
+        public void setAnte (No ante)
+        {
+        	this.ante = ante;
+        }
     }
 
     protected No primeiro, ultimo;
 
     public void insiraNoInicio (Destino destino) throws Exception
     {
-        if (destino == null)
+    	if (destino == null)
             throw new Exception ("Informacao ausente");
 
-        this.primeiro = new No (destino, this.primeiro);
+        this.primeiro = new No (destino, this.primeiro, this.primeiro);
 
-        if (this.ultimo == null)
+        if (this.ultimo == null) {
             this.ultimo = this.primeiro;
+        }
     }
 
     public void insiraNoFim (Destino destino) throws Exception
     {
-        if (destino == null)
+    	if (destino == null)
             throw new Exception ("Informacao ausente");
 
         if (this.ultimo == null)
         {
             No novo = new No (destino);
             this.primeiro = novo;
+            this.primeiro.setAnte(null);
             this.ultimo = this.primeiro;
+            this.ultimo.setAnte(this.primeiro);
         }
         else
         {
-            No valor = new No (destino);
+            No valor = new No (destino, null, this.ultimo);
             this.ultimo.setProx(valor);
             this.ultimo = valor;
-            this.ultimo.setProx(null);
         }
     }
 
@@ -273,6 +287,28 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
     			else
     				return null;
     		}
+    		else
+    		{
+    			aux = aux.getProx();
+    		}
+    	}
+    	
+    	return null;
+    }
+    
+    public Destino getAnteDestino (Destino destino)
+    {
+    	No aux = this.primeiro;
+    	while (aux != null)
+    	{
+    		if (aux.getDestino().equals(destino))
+    		{
+    			return aux.getAnte().getDestino();
+    		}
+    		else
+    		{
+    			aux = aux.getProx();
+    		}
     	}
     	
     	return null;
@@ -331,13 +367,13 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         this.ultimo   = backup;
     }
 
-    public ListaVoos getInversao ()
+   /* public ListaVoos getInversao ()
     {
         ListaVoos ret = new ListaVoos ();
 
         for (No atual=this.primeiro; atual!=null; atual=atual.getProx())
-            ret.primeiro = new No (atual.getDestino(),ret.primeiro);
+            ret.primeiro = new No (atual.getDados(), ret.primeiro, null);
 
         return ret;
-    }
+    }*/
 }
