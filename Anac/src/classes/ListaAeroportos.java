@@ -322,6 +322,19 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         this.primeiro = aux;
     }
 
+    public void remova (String codigo, int numeroVoo) throws Exception
+    {
+    	try
+    	{
+    		ListaVoos lis;
+        	lis = getLista(codigo);
+        	
+        	lis.remova(numeroVoo);
+    	}
+    	catch (Exception e)
+    	{}
+    }
+    
     public void remova (DadosAeroporto dados) throws Exception
     {
         if (dados == null)
