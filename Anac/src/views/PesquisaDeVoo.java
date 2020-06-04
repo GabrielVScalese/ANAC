@@ -32,6 +32,7 @@ public class PesquisaDeVoo extends JFrame {
 	private Destino destinoAtual;
 	private ListaVoos listaVoosAtual;
 	private JButton btnProxVoo;
+	private JButton btnAnteVoo;
 
 	/**
 	 * Launch the application.
@@ -71,11 +72,11 @@ public class PesquisaDeVoo extends JFrame {
 		contentPane.add(panel_1, BorderLayout.CENTER);
 		panel_1.setLayout(null);
 		
-		JLabel label = new JLabel("Aeroportos");
-		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Georgia", Font.PLAIN, 11));
-		label.setBounds(23, 48, 237, 14);
-		panel_1.add(label);
+		JLabel lblAeroporto = new JLabel("Aeroporto");
+		lblAeroporto.setHorizontalAlignment(SwingConstants.CENTER);
+		lblAeroporto.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblAeroporto.setBounds(23, 48, 237, 14);
+		panel_1.add(lblAeroporto);
 		
 		JLabel label_1 = new JLabel("Cidade");
 		label_1.setFont(new Font("Georgia", Font.PLAIN, 11));
@@ -150,8 +151,8 @@ public class PesquisaDeVoo extends JFrame {
 		label_5.setBounds(309, 48, 204, 14);
 		panel_1.add(label_5);
 		
-		JButton btnNewButton = new JButton("V\u00F4o Anterior");
-		btnNewButton.addMouseListener(new MouseAdapter() {
+		btnAnteVoo = new JButton("V\u00F4o Anterior");
+		btnAnteVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try
@@ -172,9 +173,9 @@ public class PesquisaDeVoo extends JFrame {
 				{}
 			}
 		});
-		btnNewButton.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnNewButton.setBounds(309, 181, 204, 23);
-		panel_1.add(btnNewButton);
+		btnAnteVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
+		btnAnteVoo.setBounds(309, 181, 204, 23);
+		panel_1.add(btnAnteVoo);
 	}
 	
 	public void initialize(String codigo) throws Exception
@@ -233,13 +234,20 @@ public class PesquisaDeVoo extends JFrame {
 	{
 		try
 		{
+			btnAnteVoo.setEnabled(true);
+			btnProxVoo.setEnabled(true);
 			txtCidade.setText(dadosAtual.getNome());
 			txtCodigo.setText(dadosAtual.getCodigo());
 			txtIndice.setText("" + destinoAtual.getIndice());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
 			
-			if (listaAeroportos.getProxDestino(dadosAtual.getCodigo(),destinoAtual) == null)
+			if (destinoAtual.equals(listaAeroportos.getDestinoDoFim(dadosAtual.getCodigo())))
 				btnProxVoo.setEnabled(false);
+			
+			if (destinoAtual.equals(listaAeroportos.getDestinoDoInicio(dadosAtual.getCodigo())))
+			{
+				btnAnteVoo.setEnabled(false);
+			}
 		}
 		catch (Exception e)
 		{
@@ -258,9 +266,7 @@ public class PesquisaDeVoo extends JFrame {
 			txtCodigo.setText(dadosAtual.getCodigo());
 			txtIndice.setText("" + destinoAtual.getIndice());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
-			
-			if (listaAeroportos.getProxDestino(dadosAtual.getCodigo(),destinoAtual) == null)
-				btnProxVoo.setEnabled(false);
+			btnAnteVoo.setEnabled(false);
 		}
 		catch (Exception e)
 		{
