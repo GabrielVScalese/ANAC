@@ -127,8 +127,8 @@ public class ExclusaoDeVoo extends JFrame {
 				try
 				{
 					destinoAtual = listaAeroportos.getProxDestino(codAero, destinoAtual);
-					if (listaAeroportos.getProxDestino(codAero, destinoAtual) == null)
-						btnProxVoo.setEnabled(false);
+					/*if (listaAeroportos.getProxDestino(codAero, destinoAtual) == null)
+						btnProxVoo.setEnabled(false);*/
 					showFlight();
 				}
 				catch (Exception error)
@@ -173,7 +173,9 @@ public class ExclusaoDeVoo extends JFrame {
 						"Exclusão de Aluno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 				if (result == JOptionPane.YES_NO_OPTION) {
 					try {
-						listaAeroportos.remova(codAero, Integer.parseInt(txtNumero.getText()));
+						System.out.println(txtNumero.getText());
+						listaAeroportos.remova(codAero, Integer.parseInt(txtNumeroVoo.getText()));
+						destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
 						txtNumero.setText("");
 						showFlight();
 						JOptionPane.showMessageDialog(null, "O Vôo foi excluído com sucesso!");
@@ -251,7 +253,7 @@ public class ExclusaoDeVoo extends JFrame {
 			txtIndice.setText("" + destinoAtual.getIndice());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
 			
-			if (destinoAtual.equals(listaAeroportos.getDestinoDoFim(codAero)))
+			if (listaAeroportos.getProxDestino(codAero, destinoAtual) == null)
 				btnProxVoo.setEnabled(false);
 			
 			if (destinoAtual.equals(listaAeroportos.getDestinoDoInicio(codAero)))
