@@ -218,7 +218,7 @@ public class Principal extends JFrame {
 				{
 					CadastroDeVoo frame = new CadastroDeVoo();
 					frame.setVisible(true);
-
+					frame.initialize();
 				}
 				catch (Exception error)
 				{}
