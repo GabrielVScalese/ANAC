@@ -103,6 +103,18 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
             this.ultimo = valor;
         }
     }
+    
+    public void inserirVoo (String codigo, Destino destino) throws Exception
+    {
+    	try
+    	{
+    		ListaVoos lis;
+        	lis = getLista(codigo);
+        	lis.insiraNoFim(destino);
+    	}
+    	catch (Exception e)
+    	{}
+    }
 
     public DadosAeroporto getProxDados (DadosAeroporto dados) throws Exception
     {
@@ -405,6 +417,23 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         }
 
         return false;
+    }
+    
+    public boolean temVoo (String codigo, int numeroVoo) throws Exception
+    {
+    	boolean ret = false;
+    	try
+    	{
+    		ListaVoos lis = getLista(codigo);
+    		if (lis.tem(numeroVoo))
+    			ret = true;
+    		else
+    			ret = false;
+    	}
+    	catch (Exception error)
+    	{}
+    	
+    	return ret;
     }
     
     public boolean tem (String codigo) throws Exception
