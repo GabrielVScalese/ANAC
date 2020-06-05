@@ -27,6 +27,8 @@ import java.awt.event.InputMethodListener;
 import java.awt.event.InputMethodEvent;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal extends JFrame {
 
@@ -100,6 +102,10 @@ public class Principal extends JFrame {
 		panel_2.add(btnNewButton);
 		
 		JButton btnCadastrarAeroporto = new JButton("Cadastrar Aeroporto");
+		btnCadastrarAeroporto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnCadastrarAeroporto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -114,7 +120,7 @@ public class Principal extends JFrame {
 			}
 		});
 		btnCadastrarAeroporto.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnCadastrarAeroporto.setBounds(161, 160, 179, 23);
+		btnCadastrarAeroporto.setBounds(10, 160, 239, 23);
 		panel_2.add(btnCadastrarAeroporto);
 		
 		JButton btnBuscarVoo = new JButton("Buscar V\u00F4os");
@@ -204,5 +210,22 @@ public class Principal extends JFrame {
 		btnExcluirVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
 		btnExcluirVoo.setBounds(350, 126, 141, 23);
 		panel_2.add(btnExcluirVoo);
+		
+		JButton btnCadastrarVoo = new JButton("Cadastrar Voo");
+		btnCadastrarVoo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try
+				{
+					CadastroDeVoo frame = new CadastroDeVoo();
+					frame.setVisible(true);
+
+				}
+				catch (Exception error)
+				{}
+			}
+		});
+		btnCadastrarVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
+		btnCadastrarVoo.setBounds(252, 160, 239, 23);
+		panel_2.add(btnCadastrarVoo);
 	}
 }

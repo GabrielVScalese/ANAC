@@ -184,7 +184,7 @@ public class ExclusaoDeVoo extends JFrame {
 						else
 						{
 							int result = JOptionPane.showConfirmDialog(null, "Você deseja excluir? O vôo será excluído",
-									"Exclusão de Aluno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+									"Exclusão de Voo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 							if (result == JOptionPane.YES_NO_OPTION) 
 							{
 								try
