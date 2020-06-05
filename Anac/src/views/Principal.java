@@ -158,6 +158,16 @@ public class Principal extends JFrame {
 		panel_2.add(btnBuscarVoo);
 		
 		txtCodAero = new JTextField();
+		txtCodAero.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseExited(MouseEvent e) {
+				if (txtCodAero.getText().equals(""))
+				{
+					btnExcluirVoo.setEnabled(false);
+					btnBuscarVoo.setEnabled(false);
+				}
+			}
+		});
 		txtCodAero.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtCodAero.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCodAero.addKeyListener(new KeyAdapter() {
