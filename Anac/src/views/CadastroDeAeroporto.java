@@ -21,6 +21,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CadastroDeAeroporto extends JFrame {
 
@@ -102,9 +104,25 @@ public class CadastroDeAeroporto extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				try
 				{
-					DadosAeroporto dados = new DadosAeroporto (txtCodigo.getText(), txtCidade.getText());
-					listaAeroportos.insiraNoFim(dados, null);
-					JOptionPane.showMessageDialog(null, "Aeroporto cadastrado com sucesso!");
+					if (stringContainsNumber(txtCodigo.getText()) || txtCodigo.getText().length() != 3 || 
+							stringContainsNumber(txtCidade.getText()) || txtCidade.getText().length() > 50 
+							|| txtCodigo.getText().equals("") || txtCidade.getText().equals(""))
+					{
+						JOptionPane.showMessageDialog(null, "Código de aeroporto ou cidade inválidos!");
+					}
+					else
+					{
+						if (existsCode(txtCodigo.getText()))
+							JOptionPane.showMessageDialog(null, "Código de aeroporto existente!");
+						else
+						{
+							DadosAeroporto dados = new DadosAeroporto (txtCidade.getText(), txtCodigo.getText());
+							listaAeroportos.insiraNoFim(dados, null);
+							dadosAtual = listaAeroportos.getDadosDoInicio();
+							showFlight();
+							JOptionPane.showMessageDialog(null, "Aeroporto cadastrado com sucesso!");
+						}
+					}
 				}
 				catch (Exception error)
 				{}
@@ -269,5 +287,33 @@ public class CadastroDeAeroporto extends JFrame {
 		{
 			System.out.print(e.getMessage());
 		}	
+	}
+	
+	protected boolean existsCode(String codigo) throws Exception
+	{
+		boolean ret = false;
+		try
+		{
+			if (listaAeroportos.tem(codigo))
+			{
+				ret = true;
+			}
+			else
+			{
+				ret = false;;
+			}
+		}
+		catch (Exception e)
+		{}
+		
+		return ret;
+	}
+	
+	protected boolean stringContainsNumber( String s )
+	{
+	    Pattern p = Pattern.compile( "[0-9]" );
+	    Matcher m = p.matcher( s );
+
+	    return m.find();
 	}
 }

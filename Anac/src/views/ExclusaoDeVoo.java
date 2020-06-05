@@ -169,19 +169,53 @@ public class ExclusaoDeVoo extends JFrame {
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				int result = JOptionPane.showConfirmDialog(null, "Você deseja excluir? O vôo será excluído",
-						"Exclusão de Aluno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
-				if (result == JOptionPane.YES_NO_OPTION) {
-					try {
-						listaAeroportos.remova(codAero, Integer.parseInt(txtNumeroVoo.getText()));
-						destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
-						txtNumero.setText("");
-						showFlight();
-						JOptionPane.showMessageDialog(null, "O Vôo foi excluído com sucesso!");
-					} catch (Exception error) {
+				if (!txtNumeroVoo.getText().matches("[0-9]+") || txtNumeroVoo.getText().equals(""))
+				{
+					JOptionPane.showMessageDialog(null, "Número de vôo inválido!");
+				}
+				else
+				{
+					try
+					{
+						if (!existsNumberFlight(codAero, Integer.parseInt(txtNumeroVoo.getText())))
+						{
+							JOptionPane.showMessageDialog(null, "Número de vôo inexistente!");
+						}
+						else
+						{
+							int result = JOptionPane.showConfirmDialog(null, "Você deseja excluir? O vôo será excluído",
+									"Exclusão de Aluno", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+							if (result == JOptionPane.YES_NO_OPTION) 
+							{
+								try
+								{
+									
+									listaAeroportos.remova(codAero, Integer.parseInt(txtNumeroVoo.getText()));
+									if (listaAeroportos.getLista(codAero).getQtd() == 0)
+									{
+										txtIndice.setText("");
+										txtNumero.setText("");
+										JOptionPane.showMessageDialog(null, "O Vôo foi excluído com sucesso!");
+									}
+									else
+									{
+										destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
+										txtNumero.setText("");
+										showFlight();
+										JOptionPane.showMessageDialog(null, "O Vôo foi excluído com sucesso!");
+									}
+								}
+								catch (Exception error)
+								{}
+								
+							} else
+								JOptionPane.showMessageDialog(null, "Exclusão cancelada!");
+						}
 					}
-				} else
-					JOptionPane.showMessageDialog(null, "Exclusão cancelada!");
+					catch (Exception error)
+					{}
+				}
+				
 			}
 		});
 		btnNewButton.setFont(new Font("Georgia", Font.PLAIN, 11));
@@ -240,6 +274,27 @@ public class ExclusaoDeVoo extends JFrame {
 			System.out.print(e.getMessage());
 		}	
 	}
+	
+	protected boolean existsNumberFlight (String codigo, int numeroVoo) throws Exception
+	{
+		boolean ret = false;
+		try
+		{
+			if (listaAeroportos.tem(codigo, numeroVoo))
+			{
+				ret = true;
+			}
+			else
+			{
+				ret = false;;
+			}
+		}
+		catch (Exception e)
+		{}
+		
+		return ret;
+	}
+	
 	
 	protected boolean existsCode(String codigo) throws Exception
 	{

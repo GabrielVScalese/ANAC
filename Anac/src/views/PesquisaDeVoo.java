@@ -288,6 +288,9 @@ public class PesquisaDeVoo extends JFrame {
 			txtIndice.setText("" + destinoAtual.getIndice());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
 			btnAnteVoo.setEnabled(false);
+			
+			if (destinoAtual.equals(listaAeroportos.getDestinoDoFim(dadosAtual.getCodigo())))
+				btnProxVoo.setEnabled(false);
 		}
 		catch (Exception e)
 		{

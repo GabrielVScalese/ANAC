@@ -18,6 +18,9 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.event.InputMethodListener;
@@ -120,7 +123,9 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent arg0) {
 				try
 				{
-					if (txtCodAero.getText().matches("[0-9]+") || txtCodAero.getText().length() != 3)
+					Pattern p = Pattern.compile( "[0-9]" );
+				    Matcher m = p.matcher(txtCodAero.getText());
+					if (m.find() || txtCodAero.getText().length() != 3)
 					{
 						JOptionPane.showMessageDialog(null, "Código de aerorporto inválido!");
 					}
@@ -173,7 +178,9 @@ public class Principal extends JFrame {
 			public void mouseClicked(MouseEvent e) {
 				try
 				{
-					if (txtCodAero.getText().matches("[0-9]+") || txtCodAero.getText().length() != 3)
+					Pattern p = Pattern.compile( "[0-9]" );
+				    Matcher m = p.matcher(txtCodAero.getText());
+					if (m.find() || txtCodAero.getText().length() != 3)
 					{
 						JOptionPane.showMessageDialog(null, "Código de aerorporto inválido!");
 					}
