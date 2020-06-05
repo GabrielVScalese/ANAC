@@ -431,6 +431,25 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
 
          return false;
     }
+    
+    public boolean tem (String codigo, int numeroVoo) throws Exception
+    {
+    	boolean ret = false;
+    	try
+    	{
+    		ListaVoos lis;
+        	lis = getLista(codigo);
+        	
+        	if (lis.tem(numeroVoo))
+        		ret = true;
+        	else
+        		ret = false;
+    	}
+    	catch (Exception e)
+    	{}
+    	
+    	return ret;
+    }
 
     public Object clone ()
     {

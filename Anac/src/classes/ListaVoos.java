@@ -177,6 +177,14 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
             return;
         }
 
+        if (this.ultimo.getDestino().getNumeroVoo() == numeroDoVoo)
+        {
+        	No guardado = this.ultimo.getAnte();
+        	this.ultimo.getAnte().setProx(null);
+        	this.ultimo = guardado;
+        	return;
+        }
+        
         No aux = this.primeiro;
         while (aux != null)
         {
@@ -235,6 +243,28 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         return false;
     }
 
+    public boolean tem (int numeroVoo)
+    {
+         No aux = this.primeiro;
+
+         while (aux != null)
+         {
+             if (aux.getDestino() == null)
+                 aux = aux.getProx();
+             else
+             {
+                 if (aux.getDestino().getNumeroVoo() == numeroVoo)
+                 {
+                     return true;
+                 }
+                 else
+                     aux = aux.getProx();
+             }
+         }
+
+         return false;
+    }
+    
     public Object clone ()
     {
         ListaVoos ret = null;
