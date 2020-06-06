@@ -158,23 +158,23 @@ public class Principal extends JFrame {
 		panel_2.add(btnBuscarVoo);
 		
 		txtCodAero = new JTextField();
-		txtCodAero.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseExited(MouseEvent e) {
-				if (txtCodAero.getText().equals(""))
-				{
-					btnExcluirVoo.setEnabled(false);
-					btnBuscarVoo.setEnabled(false);
-				}
-			}
-		});
 		txtCodAero.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtCodAero.setHorizontalAlignment(SwingConstants.CENTER);
 		txtCodAero.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
-				btnBuscarVoo.setEnabled(true);
-				btnExcluirVoo.setEnabled(true);
+				Pattern p = Pattern.compile("[a-zA-Z]+");
+			    Matcher m = p.matcher(txtCodAero.getText());
+				if (!m.find())
+				{
+					btnExcluirVoo.setEnabled(false);
+					btnBuscarVoo.setEnabled(false);
+				}
+				else
+				{
+					btnBuscarVoo.setEnabled(true);
+					btnExcluirVoo.setEnabled(true);
+				}
 			}
 		});
 		txtCodAero.setBounds(161, 81, 179, 20);

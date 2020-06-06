@@ -183,10 +183,10 @@ public class PesquisaDeVoo extends JFrame {
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("Brasilia", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("Brasília", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("Sao Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			Destino destinoBsd = new Destino(5, 107);
 			Destino destinoCnf = new Destino(5, 214);

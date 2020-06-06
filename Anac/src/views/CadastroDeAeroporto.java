@@ -112,11 +112,11 @@ public class CadastroDeAeroporto extends JFrame {
 					}
 					else
 					{
-						if (existsCode(txtCodigo.getText()))
+						if (existsCode(txtCodigo.getText().toUpperCase()))
 							JOptionPane.showMessageDialog(null, "Código de aeroporto existente!");
 						else
 						{
-							DadosAeroporto dados = new DadosAeroporto (txtCidade.getText(), txtCodigo.getText());
+							DadosAeroporto dados = new DadosAeroporto (txtCidade.getText(), txtCodigo.getText().toUpperCase());
 							listaAeroportos.insiraNoFim(dados, null);
 							dadosAtual = listaAeroportos.getDadosDoInicio();
 							showFlight();
@@ -220,10 +220,10 @@ public class CadastroDeAeroporto extends JFrame {
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("Brasilia", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("Brasília", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("Sao Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			Destino destinoBsd = new Destino(5, 107);
 			Destino destinoCnf = new Destino(5, 214);
