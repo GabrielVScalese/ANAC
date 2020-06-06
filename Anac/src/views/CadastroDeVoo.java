@@ -117,7 +117,7 @@ public class CadastroDeVoo extends JFrame {
 				{
 					Pattern p = Pattern.compile( "[0-9]" );
 				    Matcher m = p.matcher(txtCodAero.getText());
-					if (m.find() || txtCodAero.getText().length() != 3 || txtCodAero.getText().equals("") || 
+					if (m.find() || txtCodAero.getText().toUpperCase().length() != 3 || txtCodAero.getText().toUpperCase().equals("") || 
 							!txtNumeroVoo.getText().matches("[0-9]+") || Integer.parseInt(txtNumeroVoo.getText()) < 0 || 
 							txtNumeroVoo.getText().equals("") || !txtIndiceCidade.getText().matches("[0-9]+") || Integer.parseInt(txtIndiceCidade.getText()) < 0 || 
 							txtIndiceCidade.equals(""))
@@ -126,21 +126,21 @@ public class CadastroDeVoo extends JFrame {
 					}
 					else
 					{
-						if (!existsCode(txtCodAero.getText()))
+						if (!existsCode(txtCodAero.getText().toUpperCase()))
 						{
 							JOptionPane.showMessageDialog(null, "Código de aeroporto inexistente!");
 						}
 						else
 						{
-							if (listaAeroportos.temVoo(txtCodAero.getText(),Integer.parseInt(txtNumeroVoo.getText())))
+							if (listaAeroportos.temVoo(txtCodAero.getText().toUpperCase(),Integer.parseInt(txtNumeroVoo.getText())))
 							{
 								JOptionPane.showMessageDialog(null, "Número de vôo existente!");
 							}
 							else
 							{
 								Destino destino = new Destino (Integer.parseInt(txtIndiceCidade.getText()), Integer.parseInt(txtNumeroVoo.getText()));
-								listaAeroportos.inserirVoo(txtCodAero.getText(), destino);
-								System.out.println(listaAeroportos.getLista(txtCodAero.getText()));
+								listaAeroportos.inserirVoo(txtCodAero.getText().toUpperCase(), destino);
+								System.out.println(listaAeroportos.getLista(txtCodAero.getText().toUpperCase()));
 								JOptionPane.showMessageDialog(null, "O Vôo " + destino.getNumeroVoo() + " foi inserido com sucesso!");
 							}
 						}

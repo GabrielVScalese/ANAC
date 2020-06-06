@@ -138,11 +138,11 @@ public class Principal extends JFrame {
 					else
 					{
 						PesquisaDeVoo frame = new PesquisaDeVoo();
-						if (frame.existsCode(txtCodAero.getText()))
+						if (frame.existsCode(txtCodAero.getText().toUpperCase()))
 						{
 							frame.setVisible(true);
-					        frame.initialize(txtCodAero.getText());
-					        frame.showFlight(txtCodAero.getText());
+					        frame.initialize(txtCodAero.getText().toUpperCase());
+					        frame.showFlight(txtCodAero.getText().toUpperCase());
 						}
 						else
 							JOptionPane.showMessageDialog(null, "Código de aerorporto inexistente!");
@@ -203,10 +203,10 @@ public class Principal extends JFrame {
 					else
 					{
 						ExclusaoDeVoo frame = new ExclusaoDeVoo();
-						if (frame.existsCode(txtCodAero.getText()))
+						if (frame.existsCode(txtCodAero.getText().toUpperCase()))
 						{
 							frame.setVisible(true);
-					        frame.initialize(txtCodAero.getText());
+					        frame.initialize(txtCodAero.getText().toUpperCase());
 					        frame.showFlight();
 						}
 						else
