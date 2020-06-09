@@ -77,7 +77,7 @@ public class ListaAeroportos implements Cloneable
 
         /**
          * Retorna os objetos posteriores ao atual.
-         * @return Retorna os valores presentes no objeto ListaVoos posterior ao atual.
+         * @return Retorna os valores presentes nos objetos posteriores ao atual.
          *  */
         public No getProx ()
         {
@@ -86,7 +86,7 @@ public class ListaAeroportos implements Cloneable
 
         /**
          * Retorna os objetos anteriores ao atual.
-         * @return Retorna os valores presentes no objeto ListaVoos anterior ao atual.
+         * @return Retorna os valores presentes nos objetos anteriores ao atual.
          *  */
         public No getAnte()
         {
@@ -112,7 +112,7 @@ public class ListaAeroportos implements Cloneable
         }
 
         /**
-         * Adiciona valores ao ListaVoos lisVoos.
+         * Adiciona valores ao objeto posterior.
          * @param prox No contendo os objetos posteriores ao atual.
          *  */
         public void setProx (No prox)
@@ -121,7 +121,7 @@ public class ListaAeroportos implements Cloneable
         }
         
         /**
-         * Adiciona valores ao ListaVoos lisVoos.
+         * Adiciona valores ao objeto anterior.
          * @param ante No contendo os objetos anteriores ao atual.
          *  */
         public void setAnte (No ante)
@@ -190,7 +190,7 @@ public class ListaAeroportos implements Cloneable
     }
 
     /**
-     * Retorna o objeto DadosAeroporto posterior ao atual.
+     * Retorna o objeto DadosAeroporto posterior ao do parâmetro.
      * @param dados DadosAeroporto contedo dados do aeroporto.
      * @return Retorna os valores presentes no objeto DadosAeroporto posterior ao atual.
      * @throws Exception se o dados passado por parâmetro for nulo.
@@ -218,7 +218,7 @@ public class ListaAeroportos implements Cloneable
     }
     
     /**
-     * Retorna o objeto DadosAeroporto anterior ao atual.
+     * Retorna o objeto DadosAeroporto anterior ao do parâmetro.
      * @param dados DadosAeroporto contedo dados do aeroporto.
      * @return Retorna os valores presentes no objeto DadosAeroporto anterior ao atual.
      * @throws Exception se o dados passado por parâmetro for nulo.
@@ -315,7 +315,7 @@ public class ListaAeroportos implements Cloneable
     }
     
     /**
-     * Retorna o objeto Destino posterior ao atual a partir do código do aeroporto.
+     * Retorna o objeto Destino posterior ao do parâmetro a partir do código do aeroporto.
      * @param codigo String contedo o código do aeroporto.
      * @param destino Destino contendo destino do vôo.
      * @return Retorna os valores presentes no objeto Destino.
@@ -344,7 +344,7 @@ public class ListaAeroportos implements Cloneable
     }
     
     /**
-     * Retorna o objeto Destino anterior ao atual a partir do código do aeroporto.
+     * Retorna o objeto Destino anterior ao do parâmetro a partir do código do aeroporto.
      * @param codigo String contedo o código do aeroporto.
      * @param destino Destino contendo destino do vôo.
      * @return Retorna os valores presentes no objeto Destino.
@@ -522,7 +522,7 @@ public class ListaAeroportos implements Cloneable
     /**
      * Verifica a igualdade entre dois ListaAeroportos.
      * Verifica se o Object fornecido como parâmetro representa um
-     * ListaVoos igual àquele representado pela instância à qual este
+     * ListaAeroportos igual àquele representado pela instância à qual este
      * método for aplicado, resultando true em caso afirmativo,
      * ou false, caso contrário.
      * @param  obj o objeto a ser comparado com a instância à qual esse método
