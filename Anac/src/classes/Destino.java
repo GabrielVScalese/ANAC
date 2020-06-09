@@ -11,9 +11,9 @@ package classes;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
-public class Destino implements Cloneable // Armazena o indice da cidade e o numero do voo
+public class Destino implements Cloneable
 {
-	/**Integer onde o Indice será armazenado. */
+	/**Integer onde o indice será armazenado. */
     protected int indice;
     /**Integer onde o numero do voo será armazenado. */
     protected int numeroVoo;
