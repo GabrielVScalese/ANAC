@@ -46,7 +46,7 @@ public class CadastroDeVoo extends JFrame {
 	private JTextField txtIndiceCidade;
 	
 	/**
-	 * Launch the application.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -62,7 +62,7 @@ public class CadastroDeVoo extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Cria a tela.
 	 */
 	public CadastroDeVoo() {
 		setTitle("Cadastro de Voos");
@@ -110,6 +110,10 @@ public class CadastroDeVoo extends JFrame {
 		panel_2.add(txtCodAero);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		
+		/**
+	     * Adiciona na lista de vôos o objeto Destino contendo dados fornecidos pelo usuário a partir do código do aeroporto.
+	     *  */
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -195,7 +199,10 @@ public class CadastroDeVoo extends JFrame {
 		
 	}
 	
-	protected void initialize() throws Exception
+	/**
+     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     *  */
+	protected void initialize()
 	{
 		try
 		{
@@ -247,8 +254,12 @@ public class CadastroDeVoo extends JFrame {
 	}
 	
 	
-	
-	protected boolean existsCode(String codigo) throws Exception
+	/**
+     * Verifica se código de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o código do aeroporto.
+     * @return Retorna true se código existe ou false caso não exista na lista de aeroportos.
+     *  */
+	protected boolean existsCode(String codigo)
 	{
 		boolean ret = false;
 		try

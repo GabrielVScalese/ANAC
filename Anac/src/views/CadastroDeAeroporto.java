@@ -37,7 +37,7 @@ public class CadastroDeAeroporto extends JFrame {
 	private JButton btnAnteAero;
 
 	/**
-	 * Launch the application.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,7 +53,7 @@ public class CadastroDeAeroporto extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Cria a tela.
 	 */
 	public CadastroDeAeroporto() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -99,6 +99,10 @@ public class CadastroDeAeroporto extends JFrame {
 		panel_1.add(txtCodigo);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		
+		/**
+	     * Adiciona na lista de aeroportos o objeto DadosAeroporto contendo dados fornecidos pelo usuário.
+	     *  */
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -117,7 +121,7 @@ public class CadastroDeAeroporto extends JFrame {
 						else
 						{
 							DadosAeroporto dados = new DadosAeroporto (txtCidade.getText(), txtCodigo.getText().toUpperCase());
-							listaAeroportos.insiraNoFim(dados, null);
+							listaAeroportos.insiraAeroportoNoFim(dados);
 							dadosAtual = listaAeroportos.getDadosDoInicio();
 							showFlight();
 							JOptionPane.showMessageDialog(null, "Aeroporto cadastrado com sucesso!");
@@ -169,6 +173,10 @@ public class CadastroDeAeroporto extends JFrame {
 		panel_1.add(txtCodigo2);
 		
 		btnProxAero = new JButton("Pr\u00F3ximo Aeroporto");
+		
+		/**
+	     * Altera o objeto DadosAeroporto atual para seu posterior.
+	     *  */
 		btnProxAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -188,6 +196,10 @@ public class CadastroDeAeroporto extends JFrame {
 		panel_1.add(btnProxAero);
 		
 		btnAnteAero = new JButton("Aeroporto Anterior");
+		
+		/**
+	     * Altera o objeto DadosAeroporto atual para seu anterior.
+	     *  */
 		btnAnteAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -214,8 +226,10 @@ public class CadastroDeAeroporto extends JFrame {
 		panel_1.add(btnAnteAero);
 	}
 
-	
-	protected void initialize() throws Exception
+	 /**
+     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     *  */
+	protected void initialize()
 	{
 		try
 		{
@@ -261,12 +275,13 @@ public class CadastroDeAeroporto extends JFrame {
 			showFlight();
 		}
 		catch (Exception e)
-		{
-			System.out.print(e.getMessage());
-		}	
+		{}	
 	}
 		
-	protected void showFlight() throws Exception
+	 /**
+     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos.
+     *  */
+	protected void showFlight()
 	{
 		try
 		{
@@ -284,12 +299,15 @@ public class CadastroDeAeroporto extends JFrame {
 			}
 		}
 		catch (Exception e)
-		{
-			System.out.print(e.getMessage());
-		}	
+		{}
 	}
 	
-	protected boolean existsCode(String codigo) throws Exception
+	/**
+     * Verifica se código de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o código do aeroporto.
+     * @return Retorna true se código existe ou false caso não exista na lista de aeroportos.
+     *  */
+	protected boolean existsCode(String codigo)
 	{
 		boolean ret = false;
 		try
@@ -309,7 +327,12 @@ public class CadastroDeAeroporto extends JFrame {
 		return ret;
 	}
 	
-	protected boolean stringContainsNumber( String s )
+	/**
+     * Verifica se a string fornecida contém ou não valor númerico.
+     * @param s String contedo o texto fornecido.
+     * @return Retorna true se a string contém o valor númerico ou false caso a string não contenha valor numérico.
+     *  */
+	protected boolean stringContainsNumber (String s)
 	{
 	    Pattern p = Pattern.compile( "[0-9]" );
 	    Matcher m = p.matcher( s );

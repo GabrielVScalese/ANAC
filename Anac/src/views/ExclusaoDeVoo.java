@@ -36,7 +36,7 @@ public class ExclusaoDeVoo extends JFrame {
 	private JButton btnAnteVoo;
 
 	/**
-	 * Launch the application.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -52,7 +52,7 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Cria a tela.
 	 */
 	public ExclusaoDeVoo() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -121,14 +121,16 @@ public class ExclusaoDeVoo extends JFrame {
 		panel_1.add(txtNumero);
 		
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
+		
+		/**
+	     * Altera o objeto Destino atual para seu posterior.
+	     *  */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				try
 				{
 					destinoAtual = listaAeroportos.getProxDestino(codAero, destinoAtual);
-					/*if (listaAeroportos.getProxDestino(codAero, destinoAtual) == null)
-						btnProxVoo.setEnabled(false);*/
 					showFlight();
 				}
 				catch (Exception error)
@@ -140,6 +142,10 @@ public class ExclusaoDeVoo extends JFrame {
 		panel_1.add(btnProxVoo);
 		
 		btnAnteVoo = new JButton("V\u00F4o Anterior");
+		
+		/**
+	     * Altera o objeto Destino atual para seu anterior.
+	     *  */
 		btnAnteVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -166,6 +172,10 @@ public class ExclusaoDeVoo extends JFrame {
 		panel_1.add(btnAnteVoo);
 		
 		JButton btnNewButton = new JButton("Excluir");
+		
+		/**
+	     * Exclui da lista de vôos o objeto Destino indicado pelo número do vôo e a partir do código do aeroporto.
+	     *  */
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -223,6 +233,9 @@ public class ExclusaoDeVoo extends JFrame {
 		panel_1.add(btnNewButton);
 	}
 
+	/**
+     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     *  */
 	protected void initialize(String codigoAeroporto) throws Exception
 	{
 		try
@@ -265,7 +278,6 @@ public class ExclusaoDeVoo extends JFrame {
 			listaAeroportos.insiraNoFim(dadosGru, listaVoosGru);
 			listaAeroportos.insiraNoFim(dadosSsa, listaVoosSsa);
 			
-			//dadosAtual = listaAeroportos.getDadosDoInicio();
 			codAero = codigoAeroporto;
 			destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
 		}
@@ -275,6 +287,12 @@ public class ExclusaoDeVoo extends JFrame {
 		}	
 	}
 	
+	/**
+     * Verifica se o número de vôo existe na lista de vôos a partir do código do aeroporto.
+     * @param codigo String contedo o código do aeroporto.
+     * @param numeroVoo Integer contedo o número do vôo.
+     * @return Retorna true se número de vôo existe ou false caso não exista na lista de vôos.
+     *  */
 	protected boolean existsNumberFlight (String codigo, int numeroVoo) throws Exception
 	{
 		boolean ret = false;
@@ -295,8 +313,12 @@ public class ExclusaoDeVoo extends JFrame {
 		return ret;
 	}
 	
-	
-	protected boolean existsCode(String codigo) throws Exception
+	/**
+     * Verifica se código de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o código do aeroporto.
+     * @return Retorna true se código existe ou false caso não exista na lista de aeroportos.
+     *  */
+	protected boolean existsCode(String codigo)
 	{
 		boolean ret = false;
 		try
@@ -317,8 +339,10 @@ public class ExclusaoDeVoo extends JFrame {
 		return ret;
 	}
 	
-	
-	protected void showFlight() throws Exception
+	/**
+     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto destinoAtual seja o primeiro ou último da lista de vôos.
+     *  */
+	protected void showFlight()
 	{
 		try
 		{
@@ -336,9 +360,7 @@ public class ExclusaoDeVoo extends JFrame {
 			}
 		}
 		catch (Exception e)
-		{
-			System.out.print(e.getMessage());
-		}	
+		{}	
 	}
 	
 }

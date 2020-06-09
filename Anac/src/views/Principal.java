@@ -102,10 +102,6 @@ public class Principal extends JFrame {
 		panel_2.add(btnNewButton);
 		
 		JButton btnCadastrarAeroporto = new JButton("Cadastrar Aeroporto");
-		btnCadastrarAeroporto.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		btnCadastrarAeroporto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
