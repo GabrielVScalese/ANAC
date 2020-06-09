@@ -7,63 +7,104 @@ package classes;
  * @author Gabriel Villar Scalese && Guilherme Augusto Felisberto Teixeira.
  * @since 2020.
  */
-import classes.ListaAeroportos.No;
 
 public class ListaVoos implements Cloneable
 {
     protected class No
     {
+    	/**Destino onde dados do destino do vôo serão armazenados. */
         protected Destino destino;
+        /**No onde o objeto posterior do atual está armazenado. */
         protected No prox;
+        /**No onde o objeto anterior do atual está armazenado. */
         protected No ante;
 
-        public No (Destino destino, No p, No ante)
+        /**
+         * Constroi uma nova instância da classe No.
+         * @param destino Destino contedo dados do destino do vôo.
+         * @param prox No contendo o objeto posterior ao atual.
+         * @param ante No contendo o objets anterior ao atual.
+         *  */
+        public No (Destino destino, No prox, No ante)
         {
             this.destino = destino;
-            this.prox = p;
+            this.prox = prox;
             this.ante = ante;
         }
 
+        /**
+         * Constroi uma nova instância da classe No.
+         * @param destino Destino contedo dados do destino do vôo.
+         *  */
         public No (Destino destino)
         {
             this.destino = destino;
             this.prox = null;
         }
 
+        /**
+         * Retorna o objeto Destino.
+         * @return Retorna os valores presentes no objeto Destino.
+         *  */
         public Destino getDestino ()
         {
             return this.destino;
         }
 
+        /**
+         * Retorna o objeto posterior ao atual.
+         * @return Retorna os valores presentes no objeto posterior ao atual.
+         *  */
         public No getProx ()
         {
             return this.prox;
         }
         
+        /**
+         * Retorna o objeto anterior ao atual.
+         * @return Retorna os valores presentes no objeto anterior ao atual.
+         *  */
         public No getAnte ()
         {
         	return this.ante;
         }
 
+        /**
+         * Adiciona valores ao Destino destino.
+         * @param destino Destino contedo dados do destino do vôo.
+         *  */
         public void setDestino (Destino destino)
         {
             this.destino = destino;
         }
 
-        public void setProx (No p)
+        /**
+         * Adiciona valores ao objeto posterior.
+         * @param prox No contendo o objeto posterior ao atual.
+         *  */
+        public void setProx (No prox)
         {
-            this.prox = p;
+            this.prox = prox;
         }
         
+        /**
+         * Adiciona valores ao objeto anterior.
+         * @param ante No contendo o objeto anterior ao atual.
+         *  */
         public void setAnte (No ante)
         {
         	this.ante = ante;
         }
     }
     
-    /**No Contendo o primeiro e o ultimo voo da lista. */
+    /**No Contendo o primeiro e o ultimo voo da lista de vôos. */
     protected No primeiro, ultimo;
 
+    /**
+     * Insere novo objeto Destino na lista de vôos.
+     * @param destino Destino contedo dados do destino do vôo.
+     * @throws Exception se o destino passado por parâmetro for nulo.
+     *  */
     public void insiraNoFim (Destino destino) throws Exception
     {
     	if (destino == null)
@@ -172,11 +213,19 @@ public class ListaVoos implements Cloneable
         return true;
     }
     
+    /**
+     * Remove o objeto Destino a partir do número de voo.
+     * @param numeroDoVoo Integer contedo o número do vôo.
+     * @throws Exception se o numeroVoo passado por parâmetro for menor que 0 ou se a lista de vôos está vazia.
+     *  */
     public void removaVoo (int numeroDoVoo) throws Exception
     {
         if (this.ultimo == null & this.primeiro == null)
             throw new Exception ("Lista esta vazia");
 
+        if (numeroDoVoo < 0)
+        	throw new Exception ("Número do vôo inválido");
+        
         if (this.primeiro.getDestino().getNumeroVoo() == numeroDoVoo)
         {
             No guardado = this.primeiro;
@@ -203,12 +252,22 @@ public class ListaVoos implements Cloneable
                 aux.setProx(guardado);
                 break;
             }
+            
             aux = aux.getProx();
         }
     }
 
-    public boolean temVoo (int numeroVoo)
+    /**
+     * Verifica se o vôo existe a partir do número do vôo.
+     * @param numeroDoVoo Integer contedo o número do vôo.
+     * @return Retorna true se vôo existe ou false caso o vôo não exista.
+     * @throws Exception se o numeroVoo passado por parâmetro for menor que 0.
+     *  */
+    public boolean temVoo (int numeroDoVoo) throws Exception
     {
+    	if (numeroDoVoo < 0)
+    		throw new Exception ("Número do vôo inválido");
+    	
          No aux = this.primeiro;
 
          while (aux != null)
@@ -217,7 +276,7 @@ public class ListaVoos implements Cloneable
                  aux = aux.getProx();
              else
              {
-                 if (aux.getDestino().getNumeroVoo() == numeroVoo)
+                 if (aux.getDestino().getNumeroVoo() == numeroDoVoo)
                  {
                      return true;
                  }
@@ -272,9 +331,17 @@ public class ListaVoos implements Cloneable
         }
     }
 
+    /**
+     * Constroi uma nova instância da classe ListaVoos.
+     *  */
     public ListaVoos ()
     {}
 
+    /**
+     * Retorna o objeto Destino do início da lista de vôos.
+     * @return Retorna os valores presentes no objeto Destino.
+     * @throws Exception se a lista de aeroportos estiver vazia.
+     *  */
     public Destino getDoInicio() throws Exception
     {
         if (this.ultimo == null && this.primeiro == null)
@@ -283,8 +350,17 @@ public class ListaVoos implements Cloneable
         return this.primeiro.getDestino();
     }
     
-    public Destino getProxDestino (Destino destino)
+    /**
+     * Retorna o objeto Destino posterior ao do parâmetro, a partir do objeto Destino passado por parâmetro.
+     * @param destino Destino contedo dados do destino do vôo.
+     * @return Retorna os valores presentes no objeto Destino posterior ao do parâmetro.
+     * @throws Exception se o destino passado por parâmetro for nulo.
+     *  */
+    public Destino getProxDestino (Destino destino) throws Exception
     {
+    	if (destino == null)
+    		throw new Exception ("Destino inválido");
+    	
     	No aux = this.primeiro;
     	while (aux != null)
     	{
@@ -304,8 +380,17 @@ public class ListaVoos implements Cloneable
     	return null;
     }
     
-    public Destino getAnteDestino (Destino destino)
+    /**
+     * Retorna o objeto Destino anterior ao do parâmetro, a partir do objeto Destino passado por parâmetro.
+     * @param destino Destino contedo dados do destino do vôo.
+     * @return Retorna os valores presentes no objeto Destino anterior ao do parâmetro.
+     * @throws Exception se o destino passado por parâmetro for nulo.
+     *  */
+    public Destino getAnteDestino (Destino destino) throws Exception
     {
+    	if (destino == null)
+    		throw new Exception ("Destino inválido");
+    	
     	No aux = this.primeiro;
     	while (aux != null)
     	{
@@ -322,6 +407,11 @@ public class ListaVoos implements Cloneable
     	return null;
     }
 
+    /**
+     * Retorna o objeto Destino do fim da lista de vôos.
+     * @return Retorna os valores presentes no objeto Destino do fim da lista de vôos.
+     * @throws Exception se a lista de vôos estiver vazia.
+     *  */
     public Destino getDoFim() throws Exception
     {
         if (this.ultimo == null && this.primeiro == null)
@@ -330,6 +420,10 @@ public class ListaVoos implements Cloneable
         return this.ultimo.getDestino();
     }
 
+    /**
+     * Retorna a quantidade de itens da lista de vôos.
+     * @return Retorna o número de itens da lista de vôos.
+     *  */
     public int getQtd ()
     {
         No aux = this.primeiro;
