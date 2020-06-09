@@ -421,7 +421,7 @@ public class ListaAeroportos implements Cloneable
      * @return Retorna os valores presentes no objeto DadosAeroporto.
      * @throws Exception se o codigo passado por parâmetro for nulo.
      *  */
-    public DadosAeroporto exibirAeroporto (String codigo) throws Exception
+    public DadosAeroporto getAeroporto (String codigo) throws Exception
     {
     	if (codigo == null || codigo.equals(""))
             throw new Exception ("Codigo do aeroporto invalido");
@@ -446,7 +446,7 @@ public class ListaAeroportos implements Cloneable
      * @return Retorna os valores presentes no objeto ListaVoos.
      * @throws Exception se o codigo passado por parâmetro for nulo.
      *  */
-    public ListaVoos exibirListaDeVoos (String codigo) throws Exception
+    public ListaVoos getListaDeVoos (String codigo) throws Exception
     {
     	if (codigo == null || codigo.equals(""))
             throw new Exception ("Codigo do aeroporto invalido");
