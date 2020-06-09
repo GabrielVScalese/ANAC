@@ -280,8 +280,8 @@ public class PesquisaDeVoo extends JFrame {
 	{
 		try
 		{
-			dadosAtual = listaAeroportos.exibirAeroporto(codigo);
-			listaVoosAtual = listaAeroportos.exibirListaDeVoos(codigo);
+			dadosAtual = listaAeroportos.getAeroporto(codigo);
+			listaVoosAtual = listaAeroportos.getListaDeVoos(codigo);
 			destinoAtual = listaAeroportos.getDestinoDoInicio(codigo);
 			txtCidade.setText(dadosAtual.getNome());
 			txtCodigo.setText(dadosAtual.getCodigo());
