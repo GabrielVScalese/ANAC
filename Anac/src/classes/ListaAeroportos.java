@@ -164,6 +164,32 @@ public class ListaAeroportos implements Cloneable
     }
     
     /**
+     * Insere novos dados de aeroporto.
+     * @param dados DadosAeroporto contedo dados do aeroporto.
+     * @throws Exception se o dados passado por parâmetro for nulo.
+     *  */
+    public void insiraAeroportoNoFim (DadosAeroporto dados) throws Exception
+    {
+    	if (dados == null)
+            throw new Exception ("Dados de aeroporto ausentes");
+    	
+        if (this.ultimo == null)
+        {
+            No novo = new No (dados, null);
+            this.primeiro = novo;
+            this.primeiro.setAnte(null);
+            this.ultimo = this.primeiro;
+            this.ultimo.setAnte(this.primeiro);
+        }
+        else
+        {
+            No valor = new No (dados, null, null, this.ultimo);
+            this.ultimo.setProx(valor);
+            this.ultimo = valor;
+        }
+    }
+    
+    /**
      * Insere novo vôo na lista de vôos a partir do código do aeroporto.
      * @param codigo String contedo o código do aeroporto.
      * @param destino Destino contendo destino do vôo.

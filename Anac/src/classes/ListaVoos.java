@@ -226,6 +226,14 @@ public class ListaVoos implements Cloneable
         if (numeroDoVoo < 0)
         	throw new Exception ("Número do vôo inválido");
         
+        
+        if (getQtd() == 1)
+        {
+        	this.primeiro = null;
+        	this.ultimo = null;
+        	return;
+        }
+        
         if (this.primeiro.getDestino().getNumeroVoo() == numeroDoVoo)
         {
             No guardado = this.primeiro;
