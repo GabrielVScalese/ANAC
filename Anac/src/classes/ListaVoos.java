@@ -1,5 +1,12 @@
 package classes;
 
+/**
+ * A classe ListaVoos representa uma classe que armazena uma lista com todos os voos cadastrados.
+ * Instâncias desta classe permitem a manutenção desses voos.
+ * Nela encontramos, por exemplo, metodos para inserir e remover, um construtor, equals etc.
+ * @author Gabriel Villar Scalese && Guilherme Augusto Felisberto Teixeira.
+ * @since 2020.
+ */
 import classes.ListaAeroportos.No;
 
 public class ListaVoos implements Cloneable // Lista contendo objeto Destino
@@ -53,7 +60,8 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         	this.ante = ante;
         }
     }
-
+    
+    /**No Contendo o primeiro e o ultimo voo da lista. */
     protected No primeiro, ultimo;
 
     public void insiraNoInicio (Destino destino) throws Exception
@@ -89,6 +97,11 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         }
     }
 
+    /**
+     * Gera uma representação textual de todo conteúdo da ListaVoos.
+     * Produz e resulta um String representando a lista de voos.
+     * @return um String contendo representando a lista de voos.
+     */
     public String toString ()
     {
         String ret = "Voos: ";
@@ -107,7 +120,13 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
 
         return ret + "";
     }
-
+    
+    /**
+     * Calcula o código de espalhamento (ou código de hash).
+     * Calcula e resulta o código de espalhamento (ou código de hash, ou ainda o
+     * hashcode) da classe ListaVoos representada pela instância à qual o método for aplicado.
+     * @return o código de espalhamento do objeto chamante da classe ListaVoos.
+     */
     public int hashCode ()
     {
         int ret = 17;
@@ -126,6 +145,17 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         return ret;
     }
 
+    /**
+     * Verifica a igualdade entre dois ListaVoos.
+     * Verifica se o Object fornecido como parâmetro representa um
+     * ListaVoos igual àquele representado pela instância à qual este
+     * método for aplicado, resultando true em caso afirmativo,
+     * ou false, caso contrário.
+     * @param  obj o objeto a ser comparado com a instância à qual esse método
+     * for aplicado.
+     * @return true, caso o Object fornecido ao método e a instância chamante do
+     * método representarem ListaVoos iguais, ou false, caso contrário.
+     */
     public boolean equals (Object obj)
     {
         if (this == obj)
@@ -265,6 +295,11 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
          return false;
     }
     
+    /**
+     * Constroi uma cópia deste ListaVoos.
+     * Utiliza o construtor de cópia para gerar uma cópia de this e a retorna.
+     * @return a cópia deste ListaVoos como Object.
+     */
     public Object clone ()
     {
         ListaVoos ret = null;
@@ -278,6 +313,13 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         return ret;
     }
 
+    /**
+     * Constroi uma cópia da instância da classe ListaVoos dada.
+     * Para tanto, deve ser fornecida uma instancia da classe ListaVoos para ser
+     * utilizada como modelo para a construção da nova instância criada.
+     * @param modelo a instância da classe ListaVoos a ser usada como modelo.
+     * @throws Exception se o modelo for null.
+     */
     public ListaVoos (ListaVoos modelo) throws Exception
     {
         if (modelo == null)

@@ -1,5 +1,13 @@
 package classes;
 
+/**
+ * A classe ListaAeroportos representa uma classe que armazena uma lista com todos os aeroportos presentes.
+ * Instâncias desta classe permitem a manutenção desses aeroportos.
+ * Nela encontramos, por exemplo, metodos para inserir e remover, um construtor, equals etc.
+ * @author Gabriel Villar Scalese && Guilherme Augusto Felisberto Teixeira.
+ * @since 2020.
+ */
+
 public class ListaAeroportos implements Cloneable // Lista contendo objeto DadosAeroporto e objeto ListaVoos
 {
     protected class No
@@ -70,6 +78,7 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         }
     }
 
+    /**No Contendo o primeiro e o ultimo Aeroporto da lista. */
     protected No primeiro, ultimo;
 
     public void insiraNoInicio (DadosAeroporto dados, ListaVoos lis) throws Exception
@@ -152,45 +161,7 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
     }
     
     
-    public DadosAeroporto exibirAeroporto (String codigo) throws Exception
-    {
-    	if (codigo == null || codigo == "")
-            throw new Exception ("Codigo do aeroporto invalido");
-
- 
-        No aux = this.primeiro;
-        while (aux != null)
-        {
-            if (aux.getDados().getCodigo().equals(codigo))
-            {
-                return aux.getDados();
-            }
-
-            aux = aux.getProx();
-        }
-
-        return null;
-    }
     
-    public ListaVoos exibirDestino (String codigo) throws Exception
-    {
-    	if (codigo == null || codigo == "")
-            throw new Exception ("Codigo do aeroporto invalido");
-
- 
-        No aux = this.primeiro;
-        while (aux != null)
-        {
-            if (aux.getDados().getCodigo().equals(codigo))
-            {
-                return aux.getVoos();
-            }
-
-            aux = aux.getProx();
-        }
-
-        return null;
-    }
     
     public Destino getDestinoDoInicio (String codigo) throws Exception
     {
@@ -253,7 +224,111 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         return null;
     }
     
+    public Destino getProxDestino (String codigo, Destino destino) throws Exception
+    {
+    	Destino destinoProx = null;
+    	try
+    	{
+    		ListaVoos lisVoos = getLista(codigo);
+        	destinoProx = lisVoos.getProxDestino(destino);
+    	}
+    	catch (Exception e)
+    	{}
+    	
+    	return destinoProx;
+    }
     
+    public Destino getAnteDestino (String codigo, Destino destino) throws Exception
+    {
+    	Destino destinoProx = null;
+    	try
+    	{
+    		ListaVoos lisVoos = getLista(codigo);
+        	destinoProx = lisVoos.getAnteDestino(destino);
+    	}
+    	catch (Exception e)
+    	{}
+    	
+    	return destinoProx;
+    }
+    
+    public DadosAeroporto getDadosDoFim() throws Exception
+    {
+        if (this.ultimo == null && this.primeiro == null)
+            throw new Exception ("Lista esta vazia");
+
+        return this.ultimo.getDados();
+    }
+    
+
+    public DadosAeroporto getDadosDoInicio() throws Exception
+    {
+        if (this.ultimo == null && this.primeiro == null)
+            throw new Exception ("Lista esta vazia");
+
+        return this.primeiro.getDados();
+    }
+    
+    public int getQtd ()
+    {
+        No aux = this.primeiro;
+        int qtd = 0;
+        while (aux != null)
+        {
+            qtd++;
+            aux = aux.getProx();
+        }
+
+        return qtd;
+    }
+
+    
+    
+    public DadosAeroporto exibirAeroporto (String codigo) throws Exception
+    {
+    	if (codigo == null || codigo == "")
+            throw new Exception ("Codigo do aeroporto invalido");
+
+ 
+        No aux = this.primeiro;
+        while (aux != null)
+        {
+            if (aux.getDados().getCodigo().equals(codigo))
+            {
+                return aux.getDados();
+            }
+
+            aux = aux.getProx();
+        }
+
+        return null;
+    }
+    
+    public ListaVoos exibirDestino (String codigo) throws Exception
+    {
+    	if (codigo == null || codigo == "")
+            throw new Exception ("Codigo do aeroporto invalido");
+
+ 
+        No aux = this.primeiro;
+        while (aux != null)
+        {
+            if (aux.getDados().getCodigo().equals(codigo))
+            {
+                return aux.getVoos();
+            }
+
+            aux = aux.getProx();
+        }
+
+        return null;
+    }
+    
+    /**
+     * Gera uma representação textual de todo conteúdo da ListaAeroportos.
+     * Produz e resulta um String representando a lista de aeroportos.
+     * @return um String contendo representando a lista de aeroportos.
+     */
     public String toString ()
     {
         String ret = "";
@@ -278,6 +353,12 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         return ret + "}";
     }
 
+    /**
+     * Calcula o código de espalhamento (ou código de hash).
+     * Calcula e resulta o código de espalhamento (ou código de hash, ou ainda o
+     * hashcode) da classe ListaAeroportos representada pela instância à qual o método for aplicado.
+     * @return o código de espalhamento do objeto chamante da classe ListaAeroportos.
+     */
     public int hashCode ()
     {
         int ret = 17;
@@ -296,6 +377,17 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         return ret;
     }
 
+    /**
+     * Verifica a igualdade entre dois ListaAeroportos.
+     * Verifica se o Object fornecido como parâmetro representa um
+     * ListaVoos igual àquele representado pela instância à qual este
+     * método for aplicado, resultando true em caso afirmativo,
+     * ou false, caso contrário.
+     * @param  obj o objeto a ser comparado com a instância à qual esse método
+     * for aplicado.
+     * @return true, caso o Object fornecido ao método e a instância chamante do
+     * método representarem ListaAeroportos iguais, ou false, caso contrário.
+     */
     public boolean equals (Object obj)
     {
         if (this == obj)
@@ -480,6 +572,11 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
     	return ret;
     }
 
+    /**
+     * Constroi uma cópia deste ListaAeroportos.
+     * Utiliza o construtor de cópia para gerar uma cópia de this e a retorna.
+     * @return a cópia deste ListaAeroportos como Object.
+     */
     public Object clone ()
     {
         ListaAeroportos ret = null;
@@ -493,6 +590,14 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
         return ret;
     }
 
+    
+    /**
+     * Constroi uma cópia da instância da classe ListaAeroportos dada.
+     * Para tanto, deve ser fornecida uma instancia da classe ListaAeroportos para ser
+     * utilizada como modelo para a construção da nova instância criada.
+     * @param modelo a instância da classe ListaAeroportos a ser usada como modelo.
+     * @throws Exception se o modelo for null.
+     */
     public ListaAeroportos (ListaAeroportos modelo) throws Exception
     {
         if (modelo == null)
@@ -514,50 +619,7 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
     public ListaAeroportos ()
     {}
 
-    public DadosAeroporto getDadosDoInicio() throws Exception
-    {
-        if (this.ultimo == null && this.primeiro == null)
-            throw new Exception ("Lista esta vazia");
-
-        return this.primeiro.getDados();
-    }
     
-    
-    public Destino getProxDestino (String codigo, Destino destino) throws Exception
-    {
-    	Destino destinoProx = null;
-    	try
-    	{
-    		ListaVoos lisVoos = getLista(codigo);
-        	destinoProx = lisVoos.getProxDestino(destino);
-    	}
-    	catch (Exception e)
-    	{}
-    	
-    	return destinoProx;
-    }
-    
-    public Destino getAnteDestino (String codigo, Destino destino) throws Exception
-    {
-    	Destino destinoProx = null;
-    	try
-    	{
-    		ListaVoos lisVoos = getLista(codigo);
-        	destinoProx = lisVoos.getAnteDestino(destino);
-    	}
-    	catch (Exception e)
-    	{}
-    	
-    	return destinoProx;
-    }
-    
-    public DadosAeroporto getDadosDoFim() throws Exception
-    {
-        if (this.ultimo == null && this.primeiro == null)
-            throw new Exception ("Lista esta vazia");
-
-        return this.ultimo.getDados();
-    }
 
     public boolean isVazia()
     {
@@ -567,18 +629,6 @@ public class ListaAeroportos implements Cloneable // Lista contendo objeto Dados
             return false;
     }
 
-    public int getQtd ()
-    {
-        No aux = this.primeiro;
-        int qtd = 0;
-        while (aux != null)
-        {
-            qtd++;
-            aux = aux.getProx();
-        }
-
-        return qtd;
-    }
 
     public void invertaSe ()
     {

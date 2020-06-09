@@ -1,18 +1,40 @@
 package classes;
 
+/**
+ * A classe Destino representa uma classe que armazena os destinos dos voos.  Instâncias desta classe permitem o 
+ * armazenamento do indice do voo e o numero do voo.
+ * Nela encontramos, por exemplo, getters, setters, um construtor, equals etc.
+ * @author Gabriel Villar Scalese && Guilherme Augusto Felisberto Teixeira.
+ * @since 2020.
+ */
+
+
 import java.util.concurrent.LinkedBlockingDeque;
 
 public class Destino implements Cloneable // Armazena o indice da cidade e o numero do voo
 {
+	/**Integer onde o Indice será armazenado. */
     protected int indice;
+    /**Integer onde o numero do voo será armazenado. */
     protected int numeroVoo;
 
+    /**
+     * Constroi uma nova instância da classe Destino.
+     * @param indice int contedo o indice do destino.
+     * @param numeroVoo int contendo o numero do voo.
+     * @throws Exception se ocorrer algum erro nos Setters.
+     *  */
     public Destino (int indice, int numeroVoo) throws Exception
     {
         setIndice(indice);
         setNumeroVoo(numeroVoo);
     }
 
+    /**
+     * Adiciona valores ao int indice.
+     * @param indice int contedo o indice do destino.
+     * @throws Exception se o indice passado por parametro for menor que zero.
+     *  */
     public void setIndice (int indice) throws Exception
     {
         if (indice < 0)
@@ -21,6 +43,11 @@ public class Destino implements Cloneable // Armazena o indice da cidade e o num
         this.indice = indice;
     }
 
+    /**
+     * Adiciona valores ao int numeroVoo.
+     * @param numeroVoo int contedo o numero do voo.
+     * @throws Exception se o numeroVoo passado por parametro for menor que zero.
+     *  */
     public void setNumeroVoo (int numeroVoo) throws Exception
     {
         if (numeroVoo < 0)
@@ -28,17 +55,36 @@ public class Destino implements Cloneable // Armazena o indice da cidade e o num
 
         this.numeroVoo = numeroVoo;
     }
-
+    
+    /**
+     * Retorna o indice do destino.
+     * @return  Retorna o valor presente no int indice. 
+     *  */
     public int getIndice ()
     {
         return this.indice;
     }
 
+    /**
+     * Retorna o numero do voo.
+     * @return  Retorna o valor presente no int numeroVoo. 
+     *  */
     public int getNumeroVoo ()
     {
         return this.numeroVoo;
     }
 
+    /**
+     * Verifica a igualdade entre dois Destino.
+     * Verifica se o Object fornecido como parâmetro representa um
+     * Destino igual àquele representado pela instância à qual este
+     * método for aplicado, resultando true em caso afirmativo,
+     * ou false, caso contrário.
+     * @param  obj o objeto a ser comparado com a instância à qual esse método
+     * for aplicado.
+     * @return true, caso o Object fornecido ao método e a instância chamante do
+     * método representarem Destino iguais, ou false, caso contrário.
+     */
     public boolean equals (Object obj)
     {
         if (obj == null)
@@ -61,11 +107,23 @@ public class Destino implements Cloneable // Armazena o indice da cidade e o num
         return true;
     }
 
+    /**
+     * Gera uma representação textual de todo conteúdo do Destino.
+     * Produz e resulta um String representando o Indice e o numero do voo.
+     * @return um String contendo representando o Indice e o numero do voo.
+     */
     public String toString ()
     {
         return "Indice: " + this.indice + " e " + "Numero do voo: " + this.numeroVoo;
     }
 
+
+    /**
+     * Calcula o código de espalhamento (ou código de hash).
+     * Calcula e resulta o código de espalhamento (ou código de hash, ou ainda o
+     * hashcode) da classe Destino representada pela instância à qual o método for aplicado.
+     * @return o código de espalhamento do objeto chamante da classe Destino.
+     */
     public int hashCode ()
     {
         int ret = 17;
@@ -78,6 +136,11 @@ public class Destino implements Cloneable // Armazena o indice da cidade e o num
 
         return ret;
     }
+    /**
+     * Verifica se o indice e o numeroVoo dessa instância da classe é maior que o de outra classe passada por parametro.
+     * @param obj Classe cujo indice e numeroVoo serão comparados.
+     * @retun 1, se essa instância for maior, -1 se for menor, e 0 se for igual.
+     * */
 
     public int compareTo (Destino obj)
     {
@@ -96,6 +159,11 @@ public class Destino implements Cloneable // Armazena o indice da cidade e o num
         return 0;
     }
 
+    /**
+     * Constroi uma cópia deste Destino.
+     * Utiliza o construtor de cópia para gerar uma cópia de this e a retorna.
+     * @return a cópia deste Destino como Object.
+     */
     public Object clone ()
     {
         Destino ret = null;
@@ -108,7 +176,14 @@ public class Destino implements Cloneable // Armazena o indice da cidade e o num
 
         return ret;
     }
-
+    
+    /**
+     * Constroi uma cópia da instância da classe Destino dada.
+     * Para tanto, deve ser fornecida uma instancia da classe Destino para ser
+     * utilizada como modelo para a construção da nova instância criada.
+     * @param modelo a instância da classe Destino a ser usada como modelo.
+     * @throws Exception se o modelo for null.
+     */
     public Destino (Destino modelo) throws Exception
     {
         if (modelo == null)
