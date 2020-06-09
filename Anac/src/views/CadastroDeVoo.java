@@ -140,7 +140,7 @@ public class CadastroDeVoo extends JFrame {
 							{
 								Destino destino = new Destino (Integer.parseInt(txtIndiceCidade.getText()), Integer.parseInt(txtNumeroVoo.getText()));
 								listaAeroportos.inserirVoo(txtCodAero.getText().toUpperCase(), destino);
-								System.out.println(listaAeroportos.getLista(txtCodAero.getText().toUpperCase()));
+								System.out.println(listaAeroportos.getListaDeVoos(txtCodAero.getText().toUpperCase()));
 								JOptionPane.showMessageDialog(null, "O Vôo " + destino.getNumeroVoo() + " foi inserido com sucesso!");
 							}
 						}

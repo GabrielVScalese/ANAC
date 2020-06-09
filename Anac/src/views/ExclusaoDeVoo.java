@@ -191,7 +191,7 @@ public class ExclusaoDeVoo extends JFrame {
 								{
 									
 									listaAeroportos.removaVoo(codAero, Integer.parseInt(txtNumeroVoo.getText()));
-									if (listaAeroportos.getLista(codAero).getQtd() == 0)
+									if (listaAeroportos.getListaDeVoos(codAero).getQtd() == 0)
 									{
 										txtIndice.setText("");
 										txtNumero.setText("");
