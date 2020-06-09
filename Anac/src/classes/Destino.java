@@ -136,12 +136,12 @@ public class Destino implements Cloneable
 
         return ret;
     }
+    
     /**
      * Verifica se o indice e o numeroVoo dessa instância da classe é maior que o de outra classe passada por parametro.
      * @param obj Classe cujo indice e numeroVoo serão comparados.
      * @retun 1, se essa instância for maior, -1 se for menor, e 0 se for igual.
      * */
-
     public int compareTo (Destino obj)
     {
         if (this.indice > obj.indice)
