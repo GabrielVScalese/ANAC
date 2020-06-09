@@ -9,7 +9,7 @@ package classes;
  */
 
 
-public class DadosAeroporto implements Cloneable // Armazena o nome da cidade e codigo do aeroporto
+public class DadosAeroporto implements Cloneable
 {
 	/**String onde o nome do aeroporto será armazenado. */
     protected String nome;
@@ -35,7 +35,7 @@ public class DadosAeroporto implements Cloneable // Armazena o nome da cidade e 
      *  */
     public void setNome (String nome) throws Exception
     {
-        if (nome == null || nome == "")
+        if (nome == null || nome.equals(""))
             throw new Exception ("Nome invalido");
 
         this.nome = nome;
@@ -48,7 +48,7 @@ public class DadosAeroporto implements Cloneable // Armazena o nome da cidade e 
      *  */
     public void setCodigo (String codigo) throws Exception
     {
-        if (codigo == null || codigo == "")
+        if (codigo == null || codigo.equals(""))
             throw new Exception ("Codigo invalido");
 
         this.codigo = codigo;
