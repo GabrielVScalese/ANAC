@@ -8,7 +8,6 @@ package classes;
  * @since 2020.
  */
 
-
 public class DadosAeroporto implements Cloneable
 {
 	/**String onde o nome do aeroporto será armazenado. */
@@ -54,7 +53,6 @@ public class DadosAeroporto implements Cloneable
         this.codigo = codigo;
     }
     
-    
     /**
      * Retorna o nome do aeroporto.
      * @return  Retorna o valor presente na String nome. 
@@ -73,7 +71,6 @@ public class DadosAeroporto implements Cloneable
         return this.codigo;
     }
     
-
     /**
      * Verifica a igualdade entre dois DadosAeroporto.
      * Verifica se o Object fornecido como parâmetro representa um
@@ -107,7 +104,6 @@ public class DadosAeroporto implements Cloneable
         return true;
     }
     
-    
     /**
      * Calcula o código de espalhamento (ou código de hash).
      * Calcula e resulta o código de espalhamento (ou código de hash, ou ainda o
@@ -119,7 +115,7 @@ public class DadosAeroporto implements Cloneable
         int ret = 17;
 
         ret = ret * 17 + this.nome.hashCode();
-        ret = (ret * 17) + this.codigo.hashCode();
+        ret = ret * 17 + this.codigo.hashCode();
 
         if (ret < 0)
             ret = -ret;
