@@ -9,7 +9,7 @@ package classes;
  */
 import classes.ListaAeroportos.No;
 
-public class ListaVoos implements Cloneable // Lista contendo objeto Destino
+public class ListaVoos implements Cloneable
 {
     protected class No
     {
@@ -63,18 +63,6 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
     
     /**No Contendo o primeiro e o ultimo voo da lista. */
     protected No primeiro, ultimo;
-
-    public void insiraNoInicio (Destino destino) throws Exception
-    {
-    	if (destino == null)
-            throw new Exception ("Informacao ausente");
-
-        this.primeiro = new No (destino, this.primeiro, this.primeiro);
-
-        if (this.ultimo == null) {
-            this.ultimo = this.primeiro;
-        }
-    }
 
     public void insiraNoFim (Destino destino) throws Exception
     {
@@ -183,18 +171,8 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
 
         return true;
     }
-
-    public void removaDoInicio () throws Exception
-    {
-        if (this.ultimo == null && this.primeiro == null)
-            throw new Exception ("Lista esta vazia");
-
-        No aux = this.primeiro.getProx();
-        this.primeiro = null;
-        this.primeiro = aux;
-    }
-
-    public void remova (int numeroDoVoo) throws Exception
+    
+    public void removaVoo (int numeroDoVoo) throws Exception
     {
         if (this.ultimo == null & this.primeiro == null)
             throw new Exception ("Lista esta vazia");
@@ -229,51 +207,7 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         }
     }
 
-    public void removaDoFim () throws Exception
-    {
-        if (this.ultimo == null && this.primeiro == null)
-            throw new Exception ("Lista esta vazia");
-
-        No aux = this.primeiro;
-        while (aux != null)
-        {
-            if (aux.getProx().equals(this.ultimo))
-            {
-                this.ultimo = aux;
-                aux.setProx(null);
-                break;
-            }
-
-            aux = aux.getProx();
-        }
-    }
-
-    public boolean tem (Destino destino) throws Exception
-    {
-        if (destino == null)
-            throw new Exception("Parametro ausente");
-
-        No aux = this.primeiro;
-
-        while (aux != null)
-        {
-            if (aux.getDestino() == null)
-                aux = aux.getProx();
-            else
-            {
-                if (aux.getDestino().equals(destino) == true)
-                {
-                    return true;
-                }
-                else
-                    aux = aux.getProx();
-            }
-        }
-
-        return false;
-    }
-
-    public boolean tem (int numeroVoo)
+    public boolean temVoo (int numeroVoo)
     {
          No aux = this.primeiro;
 
@@ -396,14 +330,6 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
         return this.ultimo.getDestino();
     }
 
-    public boolean isVazia()
-    {
-        if (this.ultimo == null && this.primeiro == null)
-            return true;
-        else
-            return false;
-    }
-
     public int getQtd ()
     {
         No aux = this.primeiro;
@@ -416,38 +342,4 @@ public class ListaVoos implements Cloneable // Lista contendo objeto Destino
 
         return qtd;
     }
-
-    public void invertaSe ()
-    {
-        if (this.primeiro==null)
-            return;
-
-        if (this.primeiro.getProx() == null)
-            return;
-
-        No anterior=null, atual=this.primeiro, seguinte=atual.getProx();
-        while (seguinte!=null)
-        {
-            atual.setProx (anterior);
-            anterior = atual;
-            atual    = seguinte;
-            seguinte = seguinte.getProx();
-        }
-
-        this.ultimo.setProx(anterior);
-
-        No   backup   = this.primeiro;
-        this.primeiro = this.ultimo;
-        this.ultimo   = backup;
-    }
-
-   /* public ListaVoos getInversao ()
-    {
-        ListaVoos ret = new ListaVoos ();
-
-        for (No atual=this.primeiro; atual!=null; atual=atual.getProx())
-            ret.primeiro = new No (atual.getDados(), ret.primeiro, null);
-
-        return ret;
-    }*/
 }
