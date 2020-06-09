@@ -180,7 +180,7 @@ public class ListaAeroportos implements Cloneable
     	try
     	{
     		ListaVoos lis;
-        	lis = getLista(codigo);
+        	lis = getListaDeVoos(codigo);
         	lis.insiraNoFim(destino);
     	}
     	catch (Exception e)
