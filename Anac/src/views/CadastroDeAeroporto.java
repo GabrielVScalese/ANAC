@@ -294,7 +294,7 @@ public class CadastroDeAeroporto extends JFrame {
 		boolean ret = false;
 		try
 		{
-			if (listaAeroportos.tem(codigo))
+			if (listaAeroportos.temAeroporto(codigo))
 			{
 				ret = true;
 			}

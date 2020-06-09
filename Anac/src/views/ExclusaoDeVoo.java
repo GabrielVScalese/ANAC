@@ -190,7 +190,7 @@ public class ExclusaoDeVoo extends JFrame {
 								try
 								{
 									
-									listaAeroportos.remova(codAero, Integer.parseInt(txtNumeroVoo.getText()));
+									listaAeroportos.removaVoo(codAero, Integer.parseInt(txtNumeroVoo.getText()));
 									if (listaAeroportos.getLista(codAero).getQtd() == 0)
 									{
 										txtIndice.setText("");
@@ -280,7 +280,7 @@ public class ExclusaoDeVoo extends JFrame {
 		boolean ret = false;
 		try
 		{
-			if (listaAeroportos.tem(codigo, numeroVoo))
+			if (listaAeroportos.temVoo(codigo, numeroVoo))
 			{
 				ret = true;
 			}
@@ -302,7 +302,7 @@ public class ExclusaoDeVoo extends JFrame {
 		try
 		{
 			initialize(codigo);
-			if (listaAeroportos.tem(codigo))
+			if (listaAeroportos.temAeroporto(codigo))
 			{
 				ret = true;
 			}

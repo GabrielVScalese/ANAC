@@ -235,7 +235,7 @@ public class PesquisaDeVoo extends JFrame {
 		try
 		{
 			initialize(codigo);
-			if (listaAeroportos.tem(codigo))
+			if (listaAeroportos.temAeroporto(codigo))
 			{
 				ret = true;
 			}
@@ -281,7 +281,7 @@ public class PesquisaDeVoo extends JFrame {
 		try
 		{
 			dadosAtual = listaAeroportos.exibirAeroporto(codigo);
-			listaVoosAtual = listaAeroportos.exibirDestino(codigo);
+			listaVoosAtual = listaAeroportos.exibirListaDeVoos(codigo);
 			destinoAtual = listaAeroportos.getDestinoDoInicio(codigo);
 			txtCidade.setText(dadosAtual.getNome());
 			txtCodigo.setText(dadosAtual.getCodigo());
