@@ -295,7 +295,7 @@ public class ListaAeroportos implements Cloneable
      * @return Retorna os valores presentes no objeto ListaVoos.
      * @throws Exception se o codigo passado por parâmetro for nulo.
      *  */
-    public ListaVoos getLista (String codigo) throws Exception
+    public ListaVoos getListaDeVoos (String codigo) throws Exception
     {
     	if (codigo == null || codigo.equals(""))
             throw new Exception ("Codigo do aeroporto invalido");
@@ -332,7 +332,7 @@ public class ListaAeroportos implements Cloneable
     	Destino destinoProx = null;
     	try
     	{
-    		ListaVoos lisVoos = getLista(codigo);
+    		ListaVoos lisVoos = getListaDeVoos(codigo);
         	destinoProx = lisVoos.getProxDestino(destino);
     	}
     	catch (Exception e)
@@ -361,7 +361,7 @@ public class ListaAeroportos implements Cloneable
     	Destino destinoProx = null;
     	try
     	{
-    		ListaVoos lisVoos = getLista(codigo);
+    		ListaVoos lisVoos = getListaDeVoos(codigo);
         	destinoProx = lisVoos.getAnteDestino(destino);
     	}
     	catch (Exception e)
@@ -432,31 +432,6 @@ public class ListaAeroportos implements Cloneable
             if (aux.getDados().getCodigo().equals(codigo))
             {
                 return aux.getDados();
-            }
-
-            aux = aux.getProx();
-        }
-
-        return null;
-    }
-    
-    /**
-     * Retorna o objeto ListaVoos a partir do código do aeroporto.
-     * @param codigo String contedo o código do aeroporto.
-     * @return Retorna os valores presentes no objeto ListaVoos.
-     * @throws Exception se o codigo passado por parâmetro for nulo.
-     *  */
-    public ListaVoos getListaDeVoos (String codigo) throws Exception
-    {
-    	if (codigo == null || codigo.equals(""))
-            throw new Exception ("Codigo do aeroporto invalido");
-
-        No aux = this.primeiro;
-        while (aux != null)
-        {
-            if (aux.getDados().getCodigo().equals(codigo))
-            {
-                return aux.getVoos();
             }
 
             aux = aux.getProx();
@@ -574,8 +549,7 @@ public class ListaAeroportos implements Cloneable
     		throw new Exception ("Número de vôo inválido");
     	try
     	{
-    		ListaVoos lis;
-        	lis = getLista(codigo);
+        	ListaVoos lis = getListaDeVoos(codigo);
         	
         	lis.removaVoo(numeroVoo);
     	}
@@ -603,7 +577,7 @@ public class ListaAeroportos implements Cloneable
     	boolean ret = false;
     	try
     	{
-    		ListaVoos lis = getLista(codigo);
+    		ListaVoos lis = getListaDeVoos(codigo);
     		if (lis.temVoo(numeroVoo))
     			ret = true;
     		else
