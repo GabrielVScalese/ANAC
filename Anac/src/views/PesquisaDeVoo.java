@@ -35,7 +35,7 @@ public class PesquisaDeVoo extends JFrame {
 	private JButton btnAnteVoo;
 
 	/**
-	 * Launch the application.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -51,7 +51,7 @@ public class PesquisaDeVoo extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Cria a tela.
 	 */
 	public PesquisaDeVoo() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -113,6 +113,10 @@ public class PesquisaDeVoo extends JFrame {
 		panel_1.add(label_4);
 		
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
+		
+		/**
+		 * Muda para o próximo voo da lista.
+		 * */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -152,6 +156,10 @@ public class PesquisaDeVoo extends JFrame {
 		panel_1.add(label_5);
 		
 		btnAnteVoo = new JButton("V\u00F4o Anterior");
+		
+		/**
+		 *  Muda para o voo anterior na lista
+		 * */
 		btnAnteVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -178,6 +186,10 @@ public class PesquisaDeVoo extends JFrame {
 		panel_1.add(btnAnteVoo);
 	}
 	
+	
+	 /**
+     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     *  */
 	public void initialize(String codigo) throws Exception
 	{
 		try
@@ -251,6 +263,9 @@ public class PesquisaDeVoo extends JFrame {
 	}
 	
 	
+	 /**
+     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos.
+     *  */
 	protected void showFlight() throws Exception
 	{
 		try
@@ -276,6 +291,11 @@ public class PesquisaDeVoo extends JFrame {
 		}	
 	}
 	
+	 /**
+     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos 
+     * de acordo com o código passado.
+     * @param codigo string contendo o código do aeroporto desejado.
+     *  */
 	protected void showFlight(String codigo) throws Exception
 	{
 		try

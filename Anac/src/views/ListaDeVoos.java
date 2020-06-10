@@ -39,7 +39,7 @@ public class ListaDeVoos extends JFrame {
 	
 
 	/**
-	 * Launch the application.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,7 +55,7 @@ public class ListaDeVoos extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Cria a tela.
 	 */
 	public ListaDeVoos() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -89,6 +89,10 @@ public class ListaDeVoos extends JFrame {
 		panel_1.add(lblNewLabel_1);
 		
 		JButton btnProxAero = new JButton("Pr\u00F3ximo Aeroporto");
+		
+		/**
+		 * Muda o aeroporto selecionado para o próximo da lista.
+		 * */
 		btnProxAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -145,6 +149,10 @@ public class ListaDeVoos extends JFrame {
 		panel_1.add(txtNumero);
 		
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
+		
+		/**
+		 * Muda o voo para o próximo da lista relacionado com o aeroporto selecionado.
+		 * */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -176,6 +184,10 @@ public class ListaDeVoos extends JFrame {
 		panel_1.add(lblNewLabel_3);
 		
 		btnAnteAero = new JButton("Aeroporto Anterior");
+		
+		/**
+		 * Muda o aeroporto para o anterior da lista.
+		 * */
 		btnAnteAero.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -204,6 +216,10 @@ public class ListaDeVoos extends JFrame {
 		panel_1.add(btnAnteAero);
 		
 		btnAnteVoo = new JButton("V\u00F4o Anterior");
+		
+		/**
+		 * Muda o voo para o anterior na lista.
+		 * */
 		btnAnteVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -230,6 +246,9 @@ public class ListaDeVoos extends JFrame {
 		panel_1.add(btnAnteVoo);
 	}
 	
+	/**
+     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     *  */
 	protected void initialize() throws Exception
 	{
 		try
@@ -282,6 +301,10 @@ public class ListaDeVoos extends JFrame {
 		}	
 	}
 	
+	
+	/**
+     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos.
+     *  */
 	protected void showFlight() throws Exception
 	{
 		try

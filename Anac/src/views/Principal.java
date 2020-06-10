@@ -39,7 +39,7 @@ public class Principal extends JFrame {
 	private JButton btnExcluirVoo;
 
 	/**
-	 * Launch the application.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,7 +55,7 @@ public class Principal extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Cria a tela.
 	 */
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -84,6 +84,10 @@ public class Principal extends JFrame {
 		panel_2.setLayout(null);
 		
 		JButton btnNewButton = new JButton("Exibir os V\u00F4os");
+		
+		/**
+		 * Abre a tela da listagem de voos
+		 * */
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -102,6 +106,10 @@ public class Principal extends JFrame {
 		panel_2.add(btnNewButton);
 		
 		JButton btnCadastrarAeroporto = new JButton("Cadastrar Aeroporto");
+		
+		/**
+		 * Abre a tela de cadastro de aeroportos
+		 */
 		btnCadastrarAeroporto.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -120,6 +128,10 @@ public class Principal extends JFrame {
 		panel_2.add(btnCadastrarAeroporto);
 		
 		JButton btnBuscarVoo = new JButton("Buscar V\u00F4os");
+		
+		/**
+		 *  Verifica se o código do aeroporto escrito na caixa de texto existe.
+		 * */
 		btnBuscarVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -156,6 +168,10 @@ public class Principal extends JFrame {
 		txtCodAero = new JTextField();
 		txtCodAero.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtCodAero.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		/**
+		 *  Habilita ou não os botões de buscar e excluir voo de acordo com o codigo do aeroporto
+		 * */
 		txtCodAero.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -185,6 +201,10 @@ public class Principal extends JFrame {
 		
 		btnExcluirVoo = new JButton("Excluir V\u00F4o");
 		btnExcluirVoo.setEnabled(false);
+		
+		/**
+		 *  Abre a tela de excluir voo
+		 * */
 		btnExcluirVoo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -218,6 +238,10 @@ public class Principal extends JFrame {
 		panel_2.add(btnExcluirVoo);
 		
 		JButton btnCadastrarVoo = new JButton("Cadastrar Voo");
+		/**
+		 *  Abre a tela de cadastrar voo
+		 * 
+		 * */
 		btnCadastrarVoo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try
