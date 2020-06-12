@@ -28,7 +28,7 @@ public class ListaAeroportos implements Cloneable
          * @param prox No contendo os objetos posteriores ao atual.
          * @param ante No contendo os objetos anteriores ao atual.
          *  */
-        public No (DadosAeroporto dados, ListaVoos lisVoos, No prox, No ante)
+        protected No (DadosAeroporto dados, ListaVoos lisVoos, No prox, No ante)
         {
             this.dados = dados;
             this.lisVoos = lisVoos;
