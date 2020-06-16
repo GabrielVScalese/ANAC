@@ -237,7 +237,7 @@ public class Principal extends JFrame {
 		btnExcluirVoo.setBounds(350, 126, 141, 23);
 		panel_2.add(btnExcluirVoo);
 		
-		JButton btnCadastrarVoo = new JButton("Cadastrar Voo");
+		JButton btnCadastrarVoo = new JButton("Cadastrar V\u00F4o");
 		/**
 		 *  Abre a tela de cadastrar voo
 		 * 

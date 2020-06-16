@@ -124,7 +124,7 @@ public class CadastroDeVoo extends JFrame {
 					if (m.find() || txtCodAero.getText().toUpperCase().length() != 3 || txtCodAero.getText().toUpperCase().equals("") || 
 							!txtNumeroVoo.getText().matches("[0-9]+") || Integer.parseInt(txtNumeroVoo.getText()) < 0 || 
 							txtNumeroVoo.getText().equals("") || txtCodDestino.getText().matches("[0-9]+") ||
-							txtCodDestino.getText().equals(""))
+							txtCodDestino.getText().equals("") || txtCodDestino.getText().length() != 3)
 					{
 						JOptionPane.showMessageDialog(null, "Dado fornecido é inválido!");
 					}
@@ -136,16 +136,26 @@ public class CadastroDeVoo extends JFrame {
 						}
 						else
 						{
-							if (!existsCode(txtCodDestino.getText().toUpperCase()))
-							{
-								JOptionPane.showMessageDialog(null, "Código de aeroporto de destino inexistente!");
-							}
+							if (listaAeroportos.temVoo(txtCodAero.getText().toUpperCase(), Integer.parseInt(txtNumeroVoo.getText())))
+								JOptionPane.showMessageDialog(null, "Número de vôo existente!");
 							else
 							{
-								Destino destino = new Destino (listaAeroportos.getAeroportoDestino(txtCodDestino.getText().toUpperCase()), Integer.parseInt(txtNumeroVoo.getText()));
-								listaAeroportos.inserirVoo(txtCodAero.getText().toUpperCase(), destino);
-								System.out.println(listaAeroportos.getListaDeVoos(txtCodAero.getText().toUpperCase()));
-								JOptionPane.showMessageDialog(null, "O Vôo " + destino.getNumeroVoo() + " foi inserido com sucesso!");
+								if (txtCodAero.getText().toUpperCase().equals(txtCodDestino.getText().toUpperCase()))
+			                        JOptionPane.showMessageDialog(null, "Códigos de aeroportos iguais!");
+								else
+								{
+									if (!existsCode(txtCodDestino.getText().toUpperCase()))
+									{
+										JOptionPane.showMessageDialog(null, "Código de aeroporto de destino inexistente!");
+									}
+									else
+									{
+										Destino destino = new Destino (listaAeroportos.getAeroportoDestino(txtCodDestino.getText().toUpperCase()), Integer.parseInt(txtNumeroVoo.getText()));
+										listaAeroportos.inserirVoo(txtCodAero.getText().toUpperCase(), destino);
+										JOptionPane.showMessageDialog(null, "O Vôo " + destino.getNumeroVoo() + " foi inserido com sucesso!");
+										System.out.println(listaAeroportos.getListaDeVoos(txtCodAero.getText().toUpperCase()));
+									}
+								}
 							}
 						}
 					}
