@@ -39,7 +39,7 @@ public class ListaDeVoos extends JFrame {
 	
 
 	/**
-	 * Executa a aplicação.
+	 * Executa a aplicaÃ§Ã£o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -91,7 +91,7 @@ public class ListaDeVoos extends JFrame {
 		JButton btnProxAero = new JButton("Pr\u00F3ximo Aeroporto");
 		
 		/**
-		 * Muda o aeroporto selecionado para o próximo da lista.
+		 * Muda o aeroporto selecionado para o prÃ³ximo da lista.
 		 * */
 		btnProxAero.addMouseListener(new MouseAdapter() {
 			@Override
@@ -151,7 +151,7 @@ public class ListaDeVoos extends JFrame {
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
 		
 		/**
-		 * Muda o voo para o próximo da lista relacionado com o aeroporto selecionado.
+		 * Muda o voo para o prÃ³ximo da lista relacionado com o aeroporto selecionado.
 		 * */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -247,17 +247,17 @@ public class ListaDeVoos extends JFrame {
 	}
 	
 	/**
-     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
 	protected void initialize() throws Exception
 	{
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("Brasília", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("BrasÃ­lia", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("SÃ£o Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			
 			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
@@ -312,7 +312,7 @@ public class ListaDeVoos extends JFrame {
 	
 	
 	/**
-     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos.
+     * Altera o texto dos componentes do formulÃ¡rio e desabilita botÃµes de anterior e prÃ³ximo caso o objeto dadosAtual seja o primeiro ou Ãºltimo da lista de aeroportos.
      *  */
 	protected void showFlight() throws Exception
 	{
