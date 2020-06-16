@@ -43,7 +43,7 @@ public class CadastroDeVoo extends JFrame {
 	private ListaAeroportos listaAeroportos;
 	private JTextField txtCodAero;
 	private JTextField txtNumeroVoo;
-	private JTextField txtIndiceCidade;
+	private JTextField txtCodDestino;
 	
 	/**
 	 * Executa a aplicação.
@@ -123,8 +123,8 @@ public class CadastroDeVoo extends JFrame {
 				    Matcher m = p.matcher(txtCodAero.getText());
 					if (m.find() || txtCodAero.getText().toUpperCase().length() != 3 || txtCodAero.getText().toUpperCase().equals("") || 
 							!txtNumeroVoo.getText().matches("[0-9]+") || Integer.parseInt(txtNumeroVoo.getText()) < 0 || 
-							txtNumeroVoo.getText().equals("") || !txtIndiceCidade.getText().matches("[0-9]+") || Integer.parseInt(txtIndiceCidade.getText()) < 0 || 
-							txtIndiceCidade.equals(""))
+							txtNumeroVoo.getText().equals("") || txtCodDestino.getText().matches("[0-9]+") ||
+							txtCodDestino.getText().equals(""))
 					{
 						JOptionPane.showMessageDialog(null, "Dado fornecido é inválido!");
 					}
@@ -136,13 +136,13 @@ public class CadastroDeVoo extends JFrame {
 						}
 						else
 						{
-							if (listaAeroportos.temVoo(txtCodAero.getText().toUpperCase(),Integer.parseInt(txtNumeroVoo.getText())))
+							if (!existsCode(txtCodDestino.getText().toUpperCase()))
 							{
-								JOptionPane.showMessageDialog(null, "Número de vôo existente!");
+								JOptionPane.showMessageDialog(null, "Código de aeroporto de destino inexistente!");
 							}
 							else
 							{
-								Destino destino = new Destino (Integer.parseInt(txtIndiceCidade.getText()), Integer.parseInt(txtNumeroVoo.getText()));
+								Destino destino = new Destino (listaAeroportos.getAeroportoDestino(txtCodDestino.getText().toUpperCase()), Integer.parseInt(txtNumeroVoo.getText()));
 								listaAeroportos.inserirVoo(txtCodAero.getText().toUpperCase(), destino);
 								System.out.println(listaAeroportos.getListaDeVoos(txtCodAero.getText().toUpperCase()));
 								JOptionPane.showMessageDialog(null, "O Vôo " + destino.getNumeroVoo() + " foi inserido com sucesso!");
@@ -183,14 +183,14 @@ public class CadastroDeVoo extends JFrame {
 		panel_3.setBounds(365, 114, 129, 78);
 		panel_1.add(panel_3);
 		
-		txtIndiceCidade = new JTextField();
-		txtIndiceCidade.setFont(new Font("Georgia", Font.PLAIN, 11));
-		txtIndiceCidade.setHorizontalAlignment(SwingConstants.CENTER);
-		txtIndiceCidade.setColumns(10);
-		txtIndiceCidade.setBounds(10, 36, 109, 20);
-		panel_3.add(txtIndiceCidade);
+		txtCodDestino = new JTextField();
+		txtCodDestino.setFont(new Font("Georgia", Font.PLAIN, 11));
+		txtCodDestino.setHorizontalAlignment(SwingConstants.CENTER);
+		txtCodDestino.setColumns(10);
+		txtCodDestino.setBounds(10, 36, 109, 20);
+		panel_3.add(txtCodDestino);
 		
-		JLabel lblndiceDaCidade = new JLabel("\u00CDndice da Cidade :");
+		JLabel lblndiceDaCidade = new JLabel("C\u00F3digo :");
 		lblndiceDaCidade.setFont(new Font("Georgia", Font.PLAIN, 11));
 		lblndiceDaCidade.setHorizontalAlignment(SwingConstants.CENTER);
 		lblndiceDaCidade.setBounds(10, 11, 109, 14);
@@ -207,26 +207,35 @@ public class CadastroDeVoo extends JFrame {
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("Brasilia", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("Brasília", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("Sao Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
-			Destino destinoBsd = new Destino(5, 107);
-			Destino destinoCnf = new Destino(5, 214);
-			Destino destinoCnf2 = new Destino(3, 555);
-			Destino destinoCnf3 = new Destino(4, 101);
-			Destino destinoGig = new Destino(2, 554);
-			Destino destinoGig2 = new Destino(5, 90);
-			Destino destinoGru = new Destino(1, 50);
-			Destino destinoGru2 = new Destino(3, 89);
-			Destino destinoGru3 = new Destino(2, 102);
-			Destino destinoSsa = new Destino(2, 215);
+			
+			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
+			listaAeroportos.insiraAeroportoNoFim(dadosCnf);
+			listaAeroportos.insiraAeroportoNoFim(dadosGig);
+			listaAeroportos.insiraAeroportoNoFim(dadosGru);
+			listaAeroportos.insiraAeroportoNoFim(dadosSsa);
+			
+			Destino destinoBsd = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 107);
+			Destino destinoCnf = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 214);
+			Destino destinoCnf2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 555);
+			Destino destinoCnf3 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 101);
+			Destino destinoGig = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 554);
+			Destino destinoGig2 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 90);
+			Destino destinoGru = new Destino(listaAeroportos.getAeroportoDestino("BSD"), 50);
+			Destino destinoGru2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 89);
+			Destino destinoGru3 = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 102);
+			Destino destinoSsa = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 215);
+			
 			ListaVoos listaVoosBsd = new ListaVoos();
 			ListaVoos listaVoosCnf = new ListaVoos();
 			ListaVoos listaVoosGig = new ListaVoos();
 			ListaVoos listaVoosGru = new ListaVoos();
 			ListaVoos listaVoosSsa = new ListaVoos();
+			
 			listaVoosBsd.insiraNoFim(destinoBsd);
 			listaVoosCnf.insiraNoFim(destinoCnf);
 			listaVoosCnf.insiraNoFim(destinoCnf2);
@@ -238,21 +247,17 @@ public class CadastroDeVoo extends JFrame {
 			listaVoosGru.insiraNoFim(destinoGru3);
 			listaVoosSsa.insiraNoFim(destinoSsa);
 			
-			listaAeroportos.insiraNoFim(dadosBsd, listaVoosBsd);
-			listaAeroportos.insiraNoFim(dadosCnf, listaVoosCnf);
-			listaAeroportos.insiraNoFim(dadosGig, listaVoosGig);
-			listaAeroportos.insiraNoFim(dadosGru, listaVoosGru);
-			listaAeroportos.insiraNoFim(dadosSsa, listaVoosSsa);
+			listaAeroportos.insiraListaVoos(dadosBsd.getCodigo(), listaVoosBsd);
+			listaAeroportos.insiraListaVoos(dadosCnf.getCodigo(), listaVoosCnf);
+			listaAeroportos.insiraListaVoos(dadosGig.getCodigo(), listaVoosGig);
+			listaAeroportos.insiraListaVoos(dadosGru.getCodigo(), listaVoosGru);
+			listaAeroportos.insiraListaVoos(dadosSsa.getCodigo(), listaVoosSsa);
 			
 			dadosAtual = listaAeroportos.getDadosDoInicio();
-			destinoAtual = listaAeroportos.getDestinoDoInicio(dadosAtual.getCodigo());
 		}
 		catch (Exception e)
-		{
-			System.out.print(e.getMessage());
-		}	
+		{}	
 	}
-	
 	
 	/**
      * Verifica se código de aeroporto existe na lista de aeroportos.

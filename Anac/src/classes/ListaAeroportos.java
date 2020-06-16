@@ -10,7 +10,7 @@ package classes;
 
 public class ListaAeroportos implements Cloneable
 {
-    protected class No
+    public class No
     {
     	/**DadosAeroporto onde dados do aeroporto será armazenado. */
         protected DadosAeroporto dados;
@@ -28,7 +28,7 @@ public class ListaAeroportos implements Cloneable
          * @param prox No contendo os objetos posteriores ao atual.
          * @param ante No contendo os objetos anteriores ao atual.
          *  */
-        public No (DadosAeroporto dados, ListaVoos lisVoos, No prox, No ante)
+        protected No (DadosAeroporto dados, ListaVoos lisVoos, No prox, No ante)
         {
             this.dados = dados;
             this.lisVoos = lisVoos;
@@ -189,6 +189,29 @@ public class ListaAeroportos implements Cloneable
         }
     }
     
+    public void insiraListaVoos (String codAeroporto, ListaVoos listaVoos) throws Exception
+    {
+    	
+    	if (codAeroporto == null || codAeroporto.equals(""))
+            throw new Exception ("Código de aeroporto inválido");
+    	
+    	if (listaVoos == null)
+    		throw new Exception ("Lista de vôos inválida");
+    	
+    	No aux = this.primeiro;
+    	while (aux != null)
+    	{
+    		if (aux.getDados().getCodigo().contentEquals(codAeroporto))
+    		{
+    			aux.setVoos(listaVoos);
+    			return;
+    		}
+    		else
+    			aux = aux.getProx();
+    	}
+    }
+    
+    
     /**
      * Insere novo vôo na lista de vôos a partir do código do aeroporto.
      * @param codigo String contedo o código do aeroporto.
@@ -215,6 +238,25 @@ public class ListaAeroportos implements Cloneable
     	}
     }
 
+    public No getAeroportoDestino (String codAeroporto) throws Exception
+    {
+    	if (codAeroporto == null || codAeroporto.equals(""))
+    		throw new Exception ("Código de aeroporto inválido");
+    	
+    	No aux = this.primeiro;
+    	while (aux != null)
+    	{
+    		if (aux.getDados().getCodigo().equals(codAeroporto))
+    	        return new No (aux.getDados());
+    		else
+    			aux = aux.getProx();
+    	}
+    	
+    	return null;
+    }
+    
+    
+    
     /**
      * Retorna o objeto DadosAeroporto posterior ao do parâmetro.
      * @param dados DadosAeroporto contedo dados do aeroporto.

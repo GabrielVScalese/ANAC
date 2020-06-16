@@ -239,21 +239,30 @@ public class CadastroDeAeroporto extends JFrame {
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
 			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
-			Destino destinoBsd = new Destino(5, 107);
-			Destino destinoCnf = new Destino(5, 214);
-			Destino destinoCnf2 = new Destino(3, 555);
-			Destino destinoCnf3 = new Destino(4, 101);
-			Destino destinoGig = new Destino(2, 554);
-			Destino destinoGig2 = new Destino(5, 90);
-			Destino destinoGru = new Destino(1, 50);
-			Destino destinoGru2 = new Destino(3, 89);
-			Destino destinoGru3 = new Destino(2, 102);
-			Destino destinoSsa = new Destino(2, 215);
+			
+			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
+			listaAeroportos.insiraAeroportoNoFim(dadosCnf);
+			listaAeroportos.insiraAeroportoNoFim(dadosGig);
+			listaAeroportos.insiraAeroportoNoFim(dadosGru);
+			listaAeroportos.insiraAeroportoNoFim(dadosSsa);
+			
+			Destino destinoBsd = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 107);
+			Destino destinoCnf = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 214);
+			Destino destinoCnf2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 555);
+			Destino destinoCnf3 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 101);
+			Destino destinoGig = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 554);
+			Destino destinoGig2 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 90);
+			Destino destinoGru = new Destino(listaAeroportos.getAeroportoDestino("BSD"), 50);
+			Destino destinoGru2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 89);
+			Destino destinoGru3 = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 102);
+			Destino destinoSsa = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 215);
+			
 			ListaVoos listaVoosBsd = new ListaVoos();
 			ListaVoos listaVoosCnf = new ListaVoos();
 			ListaVoos listaVoosGig = new ListaVoos();
 			ListaVoos listaVoosGru = new ListaVoos();
 			ListaVoos listaVoosSsa = new ListaVoos();
+			
 			listaVoosBsd.insiraNoFim(destinoBsd);
 			listaVoosCnf.insiraNoFim(destinoCnf);
 			listaVoosCnf.insiraNoFim(destinoCnf2);
@@ -265,11 +274,11 @@ public class CadastroDeAeroporto extends JFrame {
 			listaVoosGru.insiraNoFim(destinoGru3);
 			listaVoosSsa.insiraNoFim(destinoSsa);
 			
-			listaAeroportos.insiraNoFim(dadosBsd, listaVoosBsd);
-			listaAeroportos.insiraNoFim(dadosCnf, listaVoosCnf);
-			listaAeroportos.insiraNoFim(dadosGig, listaVoosGig);
-			listaAeroportos.insiraNoFim(dadosGru, listaVoosGru);
-			listaAeroportos.insiraNoFim(dadosSsa, listaVoosSsa);
+			listaAeroportos.insiraListaVoos(dadosBsd.getCodigo(), listaVoosBsd);
+			listaAeroportos.insiraListaVoos(dadosCnf.getCodigo(), listaVoosCnf);
+			listaAeroportos.insiraListaVoos(dadosGig.getCodigo(), listaVoosGig);
+			listaAeroportos.insiraListaVoos(dadosGru.getCodigo(), listaVoosGru);
+			listaAeroportos.insiraListaVoos(dadosSsa.getCodigo(), listaVoosSsa);
 			
 			dadosAtual = listaAeroportos.getDadosDoInicio();
 			showFlight();

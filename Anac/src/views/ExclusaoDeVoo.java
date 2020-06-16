@@ -56,7 +56,7 @@ public class ExclusaoDeVoo extends JFrame {
 	 */
 	public ExclusaoDeVoo() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 588, 300);
+		setBounds(100, 100, 612, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -66,6 +66,7 @@ public class ExclusaoDeVoo extends JFrame {
 		contentPane.add(panel, BorderLayout.NORTH);
 		
 		JLabel lblNewLabel = new JLabel("Exclus\u00E3o de V\u00F4o");
+		lblNewLabel.setFont(new Font("Georgia", Font.PLAIN, 11));
 		panel.add(lblNewLabel);
 		
 		JPanel panel_1 = new JPanel();
@@ -96,10 +97,10 @@ public class ExclusaoDeVoo extends JFrame {
 		lblVosDi.setBounds(332, 33, 204, 14);
 		panel_1.add(lblVosDi);
 		
-		JLabel label_4 = new JLabel("\u00CDndice da Cidade");
-		label_4.setFont(new Font("Georgia", Font.PLAIN, 11));
-		label_4.setBounds(332, 82, 119, 14);
-		panel_1.add(label_4);
+		JLabel lblCdigoDoAeroporto = new JLabel("C\u00F3digo do Aeroporto");
+		lblCdigoDoAeroporto.setFont(new Font("Georgia", Font.PLAIN, 11));
+		lblCdigoDoAeroporto.setBounds(332, 82, 119, 14);
+		panel_1.add(lblCdigoDoAeroporto);
 		
 		JLabel label_5 = new JLabel("N\u00FAmero do V\u00F4o");
 		label_5.setFont(new Font("Georgia", Font.PLAIN, 11));
@@ -110,14 +111,14 @@ public class ExclusaoDeVoo extends JFrame {
 		txtIndice.setHorizontalAlignment(SwingConstants.CENTER);
 		txtIndice.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtIndice.setColumns(10);
-		txtIndice.setBounds(450, 79, 86, 20);
+		txtIndice.setBounds(473, 76, 86, 20);
 		panel_1.add(txtIndice);
 		
 		txtNumero = new JTextField();
 		txtNumero.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumero.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtNumero.setColumns(10);
-		txtNumero.setBounds(450, 104, 86, 20);
+		txtNumero.setBounds(473, 104, 86, 20);
 		panel_1.add(txtNumero);
 		
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
@@ -138,7 +139,7 @@ public class ExclusaoDeVoo extends JFrame {
 			}
 		});
 		btnProxVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnProxVoo.setBounds(332, 138, 204, 23);
+		btnProxVoo.setBounds(332, 138, 227, 23);
 		panel_1.add(btnProxVoo);
 		
 		btnAnteVoo = new JButton("V\u00F4o Anterior");
@@ -168,7 +169,7 @@ public class ExclusaoDeVoo extends JFrame {
 			}
 		});
 		btnAnteVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnAnteVoo.setBounds(332, 172, 204, 23);
+		btnAnteVoo.setBounds(332, 172, 227, 23);
 		panel_1.add(btnAnteVoo);
 		
 		JButton btnNewButton = new JButton("Excluir");
@@ -246,21 +247,30 @@ public class ExclusaoDeVoo extends JFrame {
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
 			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
-			Destino destinoBsd = new Destino(5, 107);
-			Destino destinoCnf = new Destino(5, 214);
-			Destino destinoCnf2 = new Destino(3, 555);
-			Destino destinoCnf3 = new Destino(4, 101);
-			Destino destinoGig = new Destino(2, 554);
-			Destino destinoGig2 = new Destino(5, 90);
-			Destino destinoGru = new Destino(1, 50);
-			Destino destinoGru2 = new Destino(3, 89);
-			Destino destinoGru3 = new Destino(2, 102);
-			Destino destinoSsa = new Destino(2, 215);
+			
+			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
+			listaAeroportos.insiraAeroportoNoFim(dadosCnf);
+			listaAeroportos.insiraAeroportoNoFim(dadosGig);
+			listaAeroportos.insiraAeroportoNoFim(dadosGru);
+			listaAeroportos.insiraAeroportoNoFim(dadosSsa);
+			
+			Destino destinoBsd = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 107);
+			Destino destinoCnf = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 214);
+			Destino destinoCnf2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 555);
+			Destino destinoCnf3 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 101);
+			Destino destinoGig = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 554);
+			Destino destinoGig2 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 90);
+			Destino destinoGru = new Destino(listaAeroportos.getAeroportoDestino("BSD"), 50);
+			Destino destinoGru2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 89);
+			Destino destinoGru3 = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 102);
+			Destino destinoSsa = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 215);
+			
 			ListaVoos listaVoosBsd = new ListaVoos();
 			ListaVoos listaVoosCnf = new ListaVoos();
 			ListaVoos listaVoosGig = new ListaVoos();
 			ListaVoos listaVoosGru = new ListaVoos();
 			ListaVoos listaVoosSsa = new ListaVoos();
+			
 			listaVoosBsd.insiraNoFim(destinoBsd);
 			listaVoosCnf.insiraNoFim(destinoCnf);
 			listaVoosCnf.insiraNoFim(destinoCnf2);
@@ -272,11 +282,11 @@ public class ExclusaoDeVoo extends JFrame {
 			listaVoosGru.insiraNoFim(destinoGru3);
 			listaVoosSsa.insiraNoFim(destinoSsa);
 			
-			listaAeroportos.insiraNoFim(dadosBsd, listaVoosBsd);
-			listaAeroportos.insiraNoFim(dadosCnf, listaVoosCnf);
-			listaAeroportos.insiraNoFim(dadosGig, listaVoosGig);
-			listaAeroportos.insiraNoFim(dadosGru, listaVoosGru);
-			listaAeroportos.insiraNoFim(dadosSsa, listaVoosSsa);
+			listaAeroportos.insiraListaVoos(dadosBsd.getCodigo(), listaVoosBsd);
+			listaAeroportos.insiraListaVoos(dadosCnf.getCodigo(), listaVoosCnf);
+			listaAeroportos.insiraListaVoos(dadosGig.getCodigo(), listaVoosGig);
+			listaAeroportos.insiraListaVoos(dadosGru.getCodigo(), listaVoosGru);
+			listaAeroportos.insiraListaVoos(dadosSsa.getCodigo(), listaVoosSsa);
 			
 			codAero = codigoAeroporto;
 			destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
@@ -348,7 +358,7 @@ public class ExclusaoDeVoo extends JFrame {
 		{
 			btnProxVoo.setEnabled(true);
 			btnAnteVoo.setEnabled(true);
-			txtIndice.setText("" + destinoAtual.getIndice());
+			txtIndice.setText("" + destinoAtual.getAeroportoDestino().getDados().getCodigo());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
 			
 			if (listaAeroportos.getProxDestino(codAero, destinoAtual) == null)

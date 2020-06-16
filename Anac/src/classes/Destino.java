@@ -11,12 +11,14 @@ package classes;
 
 import java.util.concurrent.LinkedBlockingDeque;
 
+import classes.ListaVoos.No;
+
 public class Destino implements Cloneable
 {
-	/**Integer onde o indice será armazenado. */
-    protected int indice;
     /**Integer onde o numero do voo será armazenado. */
     protected int numeroVoo;
+    
+    protected classes.ListaAeroportos.No aeroportoDestino;
 
     /**
      * Constroi uma nova instância da classe Destino.
@@ -24,25 +26,21 @@ public class Destino implements Cloneable
      * @param numeroVoo int contendo o numero do voo.
      * @throws Exception se ocorrer algum erro nos Setters.
      *  */
-    public Destino (int indice, int numeroVoo) throws Exception
+    public Destino (classes.ListaAeroportos.No aeroportoDestino, int numeroVoo) throws Exception
     {
-        setIndice(indice);
         setNumeroVoo(numeroVoo);
+        setAeroportoDestino(aeroportoDestino);
     }
 
-    /**
-     * Adiciona valores ao int indice.
-     * @param indice int contedo o indice do destino.
-     * @throws Exception se o indice passado por parametro for menor que zero.
-     *  */
-    public void setIndice (int indice) throws Exception
+    public void setAeroportoDestino (classes.ListaAeroportos.No aeroportoDestino) throws Exception
     {
-        if (indice < 0)
-            throw new Exception ("Indice invalido");
-
-        this.indice = indice;
+    	if (aeroportoDestino == null)
+    		throw new Exception ("Aeroporto de destino inválido");
+    	
+    	this.aeroportoDestino = aeroportoDestino;
     }
-
+    
+    
     /**
      * Adiciona valores ao int numeroVoo.
      * @param numeroVoo int contedo o numero do voo.
@@ -60,9 +58,9 @@ public class Destino implements Cloneable
      * Retorna o indice do destino.
      * @return  Retorna o valor presente no int indice. 
      *  */
-    public int getIndice ()
+    public classes.ListaAeroportos.No getAeroportoDestino ()
     {
-        return this.indice;
+        return this.aeroportoDestino;
     }
 
     /**
@@ -98,7 +96,7 @@ public class Destino implements Cloneable
 
         Destino des = (Destino)obj;
 
-        if (this.indice != des.indice)
+        if (!this.aeroportoDestino.equals(des.getAeroportoDestino()))
             return false;
 
         if (this.numeroVoo != des.numeroVoo)
@@ -114,7 +112,7 @@ public class Destino implements Cloneable
      */
     public String toString ()
     {
-        return "Indice: " + this.indice + " e " + "Numero do voo: " + this.numeroVoo;
+        return "Código do aeroporto: " + getAeroportoDestino().getDados().getCodigo() + " e " + "Numero do voo: " + this.numeroVoo;
     }
 
 
@@ -128,7 +126,7 @@ public class Destino implements Cloneable
     {
         int ret = 17;
 
-        ret = ret * 17 + Integer.valueOf(this.indice).hashCode();
+        ret = ret * 17 + this.aeroportoDestino.hashCode();
         ret = ret * 17 + Integer.valueOf(this.numeroVoo).hashCode();
 
         if (ret < 0)
@@ -137,28 +135,6 @@ public class Destino implements Cloneable
         return ret;
     }
     
-    /**
-     * Verifica se o indice e o numeroVoo dessa instância da classe é maior que o de outra classe passada por parametro.
-     * @param obj Classe cujo indice e numeroVoo serão comparados.
-     * @retun 1, se essa instância for maior, -1 se for menor, e 0 se for igual.
-     * */
-    public int compareTo (Destino obj)
-    {
-        if (this.indice > obj.indice)
-            return 1;
-
-        if (this.indice < obj.indice)
-            return -1;
-
-        if (this.numeroVoo > obj.numeroVoo)
-            return 1;
-
-        if (this.numeroVoo < obj.numeroVoo)
-            return -1;
-
-        return 0;
-    }
-
     /**
      * Constroi uma cópia deste Destino.
      * Utiliza o construtor de cópia para gerar uma cópia de this e a retorna.
@@ -189,7 +165,7 @@ public class Destino implements Cloneable
         if (modelo == null)
             throw new Exception ("Modelo invalido");
 
-        this.indice = modelo.indice;
+        this.aeroportoDestino = modelo.aeroportoDestino;
         this.numeroVoo = modelo.numeroVoo;
     }
 }

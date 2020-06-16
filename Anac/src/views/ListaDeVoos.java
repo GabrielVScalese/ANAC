@@ -59,7 +59,7 @@ public class ListaDeVoos extends JFrame {
 	 */
 	public ListaDeVoos() {
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(100, 100, 603, 301);
+		setBounds(100, 100, 608, 301);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -124,7 +124,7 @@ public class ListaDeVoos extends JFrame {
 		txtCodigo.setBounds(196, 101, 86, 20);
 		panel_1.add(txtCodigo);
 		
-		JLabel lblndiceDaCidade = new JLabel("\u00CDndice da Cidade");
+		JLabel lblndiceDaCidade = new JLabel("C\u00F3digo do Aeroporto");
 		lblndiceDaCidade.setFont(new Font("Georgia", Font.PLAIN, 11));
 		lblndiceDaCidade.setBounds(340, 73, 119, 14);
 		panel_1.add(lblndiceDaCidade);
@@ -133,7 +133,7 @@ public class ListaDeVoos extends JFrame {
 		txtIndice.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtIndice.setHorizontalAlignment(SwingConstants.CENTER);
 		txtIndice.setColumns(10);
-		txtIndice.setBounds(458, 70, 86, 20);
+		txtIndice.setBounds(475, 70, 86, 20);
 		panel_1.add(txtIndice);
 		
 		JLabel lblNmeroDoVo = new JLabel("N\u00FAmero do V\u00F4o");
@@ -145,7 +145,7 @@ public class ListaDeVoos extends JFrame {
 		txtNumero.setFont(new Font("Georgia", Font.PLAIN, 11));
 		txtNumero.setHorizontalAlignment(SwingConstants.CENTER);
 		txtNumero.setColumns(10);
-		txtNumero.setBounds(458, 95, 86, 20);
+		txtNumero.setBounds(475, 95, 86, 20);
 		panel_1.add(txtNumero);
 		
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
@@ -168,7 +168,7 @@ public class ListaDeVoos extends JFrame {
 			}
 		});
 		btnProxVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnProxVoo.setBounds(340, 142, 204, 23);
+		btnProxVoo.setBounds(340, 142, 221, 23);
 		panel_1.add(btnProxVoo);
 		
 		JLabel lblNewLabel_2 = new JLabel("Aeroportos");
@@ -242,7 +242,7 @@ public class ListaDeVoos extends JFrame {
 			}
 		});
 		btnAnteVoo.setFont(new Font("Georgia", Font.PLAIN, 11));
-		btnAnteVoo.setBounds(340, 176, 204, 23);
+		btnAnteVoo.setBounds(340, 176, 221, 23);
 		panel_1.add(btnAnteVoo);
 	}
 	
@@ -259,21 +259,30 @@ public class ListaDeVoos extends JFrame {
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
 			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
-			Destino destinoBsd = new Destino(5, 107);
-			Destino destinoCnf = new Destino(5, 214);
-			Destino destinoCnf2 = new Destino(3, 555);
-			Destino destinoCnf3 = new Destino(4, 101);
-			Destino destinoGig = new Destino(2, 554);
-			Destino destinoGig2 = new Destino(5, 90);
-			Destino destinoGru = new Destino(1, 50);
-			Destino destinoGru2 = new Destino(3, 89);
-			Destino destinoGru3 = new Destino(2, 102);
-			Destino destinoSsa = new Destino(2, 215);
+			
+			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
+			listaAeroportos.insiraAeroportoNoFim(dadosCnf);
+			listaAeroportos.insiraAeroportoNoFim(dadosGig);
+			listaAeroportos.insiraAeroportoNoFim(dadosGru);
+			listaAeroportos.insiraAeroportoNoFim(dadosSsa);
+			
+			Destino destinoBsd = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 107);
+			Destino destinoCnf = new Destino(listaAeroportos.getAeroportoDestino("SSA"), 214);
+			Destino destinoCnf2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 555);
+			Destino destinoCnf3 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 101);
+			Destino destinoGig = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 554);
+			Destino destinoGig2 = new Destino(listaAeroportos.getAeroportoDestino("GRU"), 90);
+			Destino destinoGru = new Destino(listaAeroportos.getAeroportoDestino("BSD"), 50);
+			Destino destinoGru2 = new Destino(listaAeroportos.getAeroportoDestino("GIG"), 89);
+			Destino destinoGru3 = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 102);
+			Destino destinoSsa = new Destino(listaAeroportos.getAeroportoDestino("CNF"), 215);
+			
 			ListaVoos listaVoosBsd = new ListaVoos();
 			ListaVoos listaVoosCnf = new ListaVoos();
 			ListaVoos listaVoosGig = new ListaVoos();
 			ListaVoos listaVoosGru = new ListaVoos();
 			ListaVoos listaVoosSsa = new ListaVoos();
+			
 			listaVoosBsd.insiraNoFim(destinoBsd);
 			listaVoosCnf.insiraNoFim(destinoCnf);
 			listaVoosCnf.insiraNoFim(destinoCnf2);
@@ -285,11 +294,11 @@ public class ListaDeVoos extends JFrame {
 			listaVoosGru.insiraNoFim(destinoGru3);
 			listaVoosSsa.insiraNoFim(destinoSsa);
 			
-			listaAeroportos.insiraNoFim(dadosBsd, listaVoosBsd);
-			listaAeroportos.insiraNoFim(dadosCnf, listaVoosCnf);
-			listaAeroportos.insiraNoFim(dadosGig, listaVoosGig);
-			listaAeroportos.insiraNoFim(dadosGru, listaVoosGru);
-			listaAeroportos.insiraNoFim(dadosSsa, listaVoosSsa);
+			listaAeroportos.insiraListaVoos(dadosBsd.getCodigo(), listaVoosBsd);
+			listaAeroportos.insiraListaVoos(dadosCnf.getCodigo(), listaVoosCnf);
+			listaAeroportos.insiraListaVoos(dadosGig.getCodigo(), listaVoosGig);
+			listaAeroportos.insiraListaVoos(dadosGru.getCodigo(), listaVoosGru);
+			listaAeroportos.insiraListaVoos(dadosSsa.getCodigo(), listaVoosSsa);
 			
 			dadosAtual = listaAeroportos.getDadosDoInicio();
 			destinoAtual = listaAeroportos.getDestinoDoInicio(dadosAtual.getCodigo());
@@ -314,7 +323,7 @@ public class ListaDeVoos extends JFrame {
 			btnAnteVoo.setEnabled(true);
 			txtCidade.setText(dadosAtual.getNome());
 			txtCodigo.setText(dadosAtual.getCodigo());
-			txtIndice.setText("" + destinoAtual.getIndice());
+			txtIndice.setText("" + destinoAtual.getAeroportoDestino().getDados().getCodigo());
 			txtNumero.setText("" + destinoAtual.getNumeroVoo());
 			
 			if (destinoAtual.equals(listaAeroportos.getDestinoDoFim(dadosAtual.getCodigo())))
