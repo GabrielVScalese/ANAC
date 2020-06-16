@@ -190,7 +190,7 @@ public class PesquisaDeVoo extends JFrame {
 	 /**
      * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
-	public void initialize(String codigo) throws Exception
+	public void initialize(String codigo)
 	{
 		try
 		{

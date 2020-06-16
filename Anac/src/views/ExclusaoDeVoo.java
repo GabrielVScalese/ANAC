@@ -237,7 +237,7 @@ public class ExclusaoDeVoo extends JFrame {
 	/**
      * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
-	protected void initialize(String codigoAeroporto) throws Exception
+	protected void initialize(String codigoAeroporto)
 	{
 		try
 		{
@@ -303,7 +303,7 @@ public class ExclusaoDeVoo extends JFrame {
      * @param numeroVoo Integer contedo o número do vôo.
      * @return Retorna true se número de vôo existe ou false caso não exista na lista de vôos.
      *  */
-	protected boolean existsNumberFlight (String codigo, int numeroVoo) throws Exception
+	protected boolean existsNumberFlight (String codigo, int numeroVoo)
 	{
 		boolean ret = false;
 		try

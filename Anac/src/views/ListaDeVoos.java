@@ -249,7 +249,7 @@ public class ListaDeVoos extends JFrame {
 	/**
      * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
-	protected void initialize() throws Exception
+	protected void initialize()
 	{
 		try
 		{
@@ -314,7 +314,7 @@ public class ListaDeVoos extends JFrame {
 	/**
      * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos.
      *  */
-	protected void showFlight() throws Exception
+	protected void showFlight()
 	{
 		try
 		{
