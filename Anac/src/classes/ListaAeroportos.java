@@ -134,36 +134,6 @@ public class ListaAeroportos implements Cloneable
     protected No primeiro, ultimo;
 
     /**
-     * Insere novos dados de aeroporto e uma nova lista de vôos.
-     * @param dados DadosAeroporto contedo dados do aeroporto.
-     * @param lisVoos ListaVoos contendo a lista de voos desse aeroporto.
-     * @throws Exception se o dados passado por parâmetro for nulo ou se o lisVoos passado por parâmetro for nulo.
-     *  */
-    public void insiraNoFim (DadosAeroporto dados, ListaVoos lisVoos) throws Exception
-    {
-    	if (dados == null)
-            throw new Exception ("Dados de aeroporto ausentes");
-    	
-    	if (lisVoos == null)
-    		throw new Exception ("Lista de voos ausente");
-
-        if (this.ultimo == null)
-        {
-            No novo = new No (dados, lisVoos);
-            this.primeiro = novo;
-            this.primeiro.setAnte(null);
-            this.ultimo = this.primeiro;
-            this.ultimo.setAnte(this.primeiro);
-        }
-        else
-        {
-            No valor = new No (dados, lisVoos, null, this.ultimo);
-            this.ultimo.setProx(valor);
-            this.ultimo = valor;
-        }
-    }
-    
-    /**
      * Insere novos dados de aeroporto.
      * @param dados DadosAeroporto contedo dados do aeroporto.
      * @throws Exception se o dados passado por parâmetro for nulo.
@@ -189,6 +159,12 @@ public class ListaAeroportos implements Cloneable
         }
     }
     
+    /**
+     * Insere nova lista de vôos a um aeroporto especificado por seu código.
+     * @param codigo String contedo o código do aeroporto.
+     * @param listaVoos ListaVoos contendo a lista de voos desse aeroporto.
+     * @throws Exception se o codAeroporto passado por parâmetro for nulo ou se o listaVoos passado por parâmetro for nulo.
+     *  */
     public void insiraListaVoos (String codAeroporto, ListaVoos listaVoos) throws Exception
     {
     	
@@ -210,7 +186,6 @@ public class ListaAeroportos implements Cloneable
     			aux = aux.getProx();
     	}
     }
-    
     
     /**
      * Insere novo vôo na lista de vôos a partir do código do aeroporto.
@@ -238,6 +213,12 @@ public class ListaAeroportos implements Cloneable
     	}
     }
 
+    /**
+     * Retorna o No de um aeroporto especificado por seu código.
+     * @param codAeroporto String contedo o código do aeroporto.
+     * @return Retorna os valores presentes no No do aeroporto especificado por seu código.
+     * @throws Exception se o dados passado por parâmetro for nulo.
+     *  */
     public No getAeroportoDestino (String codAeroporto) throws Exception
     {
     	if (codAeroporto == null || codAeroporto.equals(""))
@@ -254,8 +235,6 @@ public class ListaAeroportos implements Cloneable
     	
     	return null;
     }
-    
-    
     
     /**
      * Retorna o objeto DadosAeroporto posterior ao do parâmetro.

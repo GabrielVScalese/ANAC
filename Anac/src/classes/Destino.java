@@ -17,12 +17,12 @@ public class Destino implements Cloneable
 {
     /**Integer onde o numero do voo será armazenado. */
     protected int numeroVoo;
-    
+    /**No onde o No do aeroporto de destino é apontado. */
     protected classes.ListaAeroportos.No aeroportoDestino;
 
     /**
      * Constroi uma nova instância da classe Destino.
-     * @param indice int contedo o indice do destino.
+     * @param aeroportoDestino No apontando ao No do aeroporto de destino.
      * @param numeroVoo int contendo o numero do voo.
      * @throws Exception se ocorrer algum erro nos Setters.
      *  */
@@ -32,6 +32,11 @@ public class Destino implements Cloneable
         setAeroportoDestino(aeroportoDestino);
     }
 
+    /**
+     * Adiciona valores ao No aeroportoDestino.
+     * @param aeroportoDestino No apontando ao No do aeroporto de destino.
+     * @throws Exception se o aeroportoDestino passado por parâmetro for nulo.
+     *  */
     public void setAeroportoDestino (classes.ListaAeroportos.No aeroportoDestino) throws Exception
     {
     	if (aeroportoDestino == null)
@@ -39,7 +44,6 @@ public class Destino implements Cloneable
     	
     	this.aeroportoDestino = aeroportoDestino;
     }
-    
     
     /**
      * Adiciona valores ao int numeroVoo.
