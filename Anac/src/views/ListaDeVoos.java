@@ -39,7 +39,7 @@ public class ListaDeVoos extends JFrame {
 	
 
 	/**
-	 * Executa a aplicaÃ§Ã£o.
+	 * Executa a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -91,7 +91,7 @@ public class ListaDeVoos extends JFrame {
 		JButton btnProxAero = new JButton("Pr\u00F3ximo Aeroporto");
 		
 		/**
-		 * Muda o aeroporto selecionado para o prÃ³ximo da lista.
+		 * Muda o aeroporto selecionado para o próximo da lista.
 		 * */
 		btnProxAero.addMouseListener(new MouseAdapter() {
 			@Override
@@ -151,7 +151,7 @@ public class ListaDeVoos extends JFrame {
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
 		
 		/**
-		 * Muda o voo para o prÃ³ximo da lista relacionado com o aeroporto selecionado.
+		 * Muda o voo para o próximo da lista relacionado com o aeroporto selecionado.
 		 * */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -312,7 +312,7 @@ public class ListaDeVoos extends JFrame {
 	
 	
 	/**
-     * Altera o texto dos componentes do formulÃ¡rio e desabilita botÃµes de anterior e prÃ³ximo caso o objeto dadosAtual seja o primeiro ou Ãºltimo da lista de aeroportos.
+     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto dadosAtual seja o primeiro ou último da lista de aeroportos.
      *  */
 	protected void showFlight()
 	{

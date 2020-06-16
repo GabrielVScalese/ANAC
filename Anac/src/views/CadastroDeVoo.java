@@ -46,7 +46,7 @@ public class CadastroDeVoo extends JFrame {
 	private JTextField txtCodDestino;
 	
 	/**
-	 * Executa a aplica莽茫o.
+	 * Executa a aplica玢o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -112,7 +112,7 @@ public class CadastroDeVoo extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		
 		/**
-	     * Adiciona na lista de v么os o objeto Destino contendo dados fornecidos pelo usu谩rio a partir do c贸digo do aeroporto.
+	     * Adiciona na lista de v鬿s o objeto Destino contendo dados fornecidos pelo usu醨io a partir do c骴igo do aeroporto.
 	     *  */
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -270,9 +270,9 @@ public class CadastroDeVoo extends JFrame {
 	}
 	
 	/**
-     * Verifica se c贸digo de aeroporto existe na lista de aeroportos.
-     * @param codigo String contedo o c贸digo do aeroporto.
-     * @return Retorna true se c贸digo existe ou false caso n茫o exista na lista de aeroportos.
+     * Verifica se c骴igo de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o c骴igo do aeroporto.
+     * @return Retorna true se c骴igo existe ou false caso n鉶 exista na lista de aeroportos.
      *  */
 	protected boolean existsCode(String codigo)
 	{

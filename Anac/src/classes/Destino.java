@@ -2,7 +2,7 @@ package classes;
 
 /**
  * A classe Destino representa uma classe que armazena os destinos dos voos.  Instâncias desta classe permitem o 
- * armazenamento do indice do voo e o numero do voo.
+ * armazenamento do indice do aeroporto e o numero do voo.
  * Nela encontramos, por exemplo, getters, setters, um construtor, equals etc.
  * @author Gabriel Villar Scalese && Guilherme Augusto Felisberto Teixeira.
  * @since 2020.

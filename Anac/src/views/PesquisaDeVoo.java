@@ -35,7 +35,7 @@ public class PesquisaDeVoo extends JFrame {
 	private JButton btnAnteVoo;
 
 	/**
-	 * Executa a aplica莽茫o.
+	 * Executa a aplica玢o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -115,7 +115,7 @@ public class PesquisaDeVoo extends JFrame {
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
 		
 		/**
-		 * Muda para o pr贸ximo voo da lista.
+		 * Muda para o pr髕imo voo da lista.
 		 * */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -251,9 +251,9 @@ public class PesquisaDeVoo extends JFrame {
 	}
 	
 	 /**
-     * Verifica se existe o c贸digo de aeroporto passado por par芒metro.
-     * @param codigo String contendo o c贸digo do aeroporto desejado.
-     * @return Retorna true se o c贸digo de aeroporto existe ou false caso o c贸digo de aeroporto n茫o exista.
+     * Verifica se existe o c骴igo de aeroporto passado por par鈓etro.
+     * @param codigo String contendo o c骴igo do aeroporto desejado.
+     * @return Retorna true se o c骴igo de aeroporto existe ou false caso o c骴igo de aeroporto n鉶 exista.
      *  */
 	protected boolean existsCode(String codigo) 
 	{
@@ -278,7 +278,7 @@ public class PesquisaDeVoo extends JFrame {
 	
 	
 	 /**
-     * Altera o texto dos componentes do formul谩rio e desabilita bot玫es de anterior e pr贸ximo caso o objeto dadosAtual seja o primeiro ou 煤ltimo da lista de aeroportos.
+     * Altera o texto dos componentes do formul醨io e desabilita bot鮡s de anterior e pr髕imo caso o objeto dadosAtual seja o primeiro 鷏timo da lista de aeroportos.
      *  */
 	protected void showFlight()
 	{
@@ -306,9 +306,9 @@ public class PesquisaDeVoo extends JFrame {
 	}
 	
 	 /**
-     * Altera o texto dos componentes do formul谩rio e desabilita bot玫es de anterior e pr贸ximo caso o objeto dadosAtual seja o primeiro ou 煤ltimo da lista de aeroportos 
-     * de acordo com o c贸digo passado.
-     * @param codigo String contendo o c贸digo do aeroporto desejado.
+     * Altera o texto dos componentes do formul醨io e desabilita bot鮡s de anterior e pr髕imo caso o objeto dadosAtual seja o primeiro ou 鷏timo da lista de aeroportos 
+     * de acordo com o c骴igo passado.
+     * @param codigo String contendo o c骴igo do aeroporto desejado.
      *  */
 	protected void showFlight(String codigo)
 	{

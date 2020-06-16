@@ -36,7 +36,7 @@ public class ExclusaoDeVoo extends JFrame {
 	private JButton btnAnteVoo;
 
 	/**
-	 * Executa a aplica莽茫o.
+	 * Executa a aplica玢o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -175,7 +175,7 @@ public class ExclusaoDeVoo extends JFrame {
 		JButton btnNewButton = new JButton("Excluir");
 		
 		/**
-	     * Exclui da lista de v么os o objeto Destino indicado pelo n煤mero do v么o e a partir do c贸digo do aeroporto.
+	     * Exclui da lista de v鬿s o objeto Destino indicado pelo n鷐ero do v鬿 e a partir do c骴igo do aeroporto.
 	     *  */
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
@@ -298,10 +298,10 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 	
 	/**
-     * Verifica se o n煤mero de v么o existe na lista de v么os a partir do c贸digo do aeroporto.
-     * @param codigo String contedo o c贸digo do aeroporto.
-     * @param numeroVoo Integer contedo o n煤mero do v么o.
-     * @return Retorna true se n煤mero de v么o existe ou false caso n茫o exista na lista de v么os.
+     * Verifica se o n鷐ero de v鬿 existe na lista de v鬿s a partir do c骴igo do aeroporto.
+     * @param codigo String contedo o c骴igo do aeroporto.
+     * @param numeroVoo Integer contedo o n鷐ero do v鬿.
+     * @return Retorna true se n鷐ero de v鬿 existe ou false caso n鉶 exista na lista de v鬿s.
      *  */
 	protected boolean existsNumberFlight (String codigo, int numeroVoo)
 	{
@@ -324,9 +324,9 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 	
 	/**
-     * Verifica se c贸digo de aeroporto existe na lista de aeroportos.
-     * @param codigo String contedo o c贸digo do aeroporto.
-     * @return Retorna true se c贸digo existe ou false caso n茫o exista na lista de aeroportos.
+     * Verifica se c骴igo de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o c骴igo do aeroporto.
+     * @return Retorna true se c骴igo existe ou false caso n鉶 exista na lista de aeroportos.
      *  */
 	protected boolean existsCode(String codigo)
 	{
@@ -350,7 +350,7 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 	
 	/**
-     * Altera o texto dos componentes do formul谩rio e desabilita bot玫es de anterior e pr贸ximo caso o objeto destinoAtual seja o primeiro ou 煤ltimo da lista de v么os.
+     * Altera o texto dos componentes do formul醨io e desabilita bot鮡s de anterior e pr髕imo caso o objeto destinoAtual seja o primeiro ou 鷏timo da lista de v鬿s.
      *  */
 	protected void showFlight()
 	{
