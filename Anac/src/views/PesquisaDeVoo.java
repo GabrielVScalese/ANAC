@@ -35,7 +35,7 @@ public class PesquisaDeVoo extends JFrame {
 	private JButton btnAnteVoo;
 
 	/**
-	 * Executa a aplica玢o.
+	 * Executa a aplica莽茫o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -115,7 +115,7 @@ public class PesquisaDeVoo extends JFrame {
 		btnProxVoo = new JButton("Pr\u00F3ximo V\u00F4o");
 		
 		/**
-		 * Muda para o pr髕imo voo da lista.
+		 * Muda para o pr贸ximo voo da lista.
 		 * */
 		btnProxVoo.addMouseListener(new MouseAdapter() {
 			@Override
@@ -188,17 +188,17 @@ public class PesquisaDeVoo extends JFrame {
 	
 	
 	 /**
-     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
 	public void initialize(String codigo) throws Exception
 	{
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("Bras韑ia", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("Bras铆lia", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("S鉶 Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("S茫o Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			
 			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
@@ -250,7 +250,12 @@ public class PesquisaDeVoo extends JFrame {
 		}	
 	}
 	
-	protected boolean existsCode(String codigo) throws Exception
+	 /**
+     * Verifica se existe o c贸digo de aeroporto passado por par芒metro.
+     * @param codigo String contendo o c贸digo do aeroporto desejado.
+     * @return Retorna true se o c贸digo de aeroporto existe ou false caso o c贸digo de aeroporto n茫o exista.
+     *  */
+	protected boolean existsCode(String codigo) 
 	{
 		boolean ret = false;
 		try
@@ -273,9 +278,9 @@ public class PesquisaDeVoo extends JFrame {
 	
 	
 	 /**
-     * Altera o texto dos componentes do formul醨io e desabilita bot鮡s de anterior e pr髕imo caso o objeto dadosAtual seja o primeiro ou 鷏timo da lista de aeroportos.
+     * Altera o texto dos componentes do formul谩rio e desabilita bot玫es de anterior e pr贸ximo caso o objeto dadosAtual seja o primeiro ou 煤ltimo da lista de aeroportos.
      *  */
-	protected void showFlight() throws Exception
+	protected void showFlight()
 	{
 		try
 		{
@@ -301,11 +306,11 @@ public class PesquisaDeVoo extends JFrame {
 	}
 	
 	 /**
-     * Altera o texto dos componentes do formul醨io e desabilita bot鮡s de anterior e pr髕imo caso o objeto dadosAtual seja o primeiro ou 鷏timo da lista de aeroportos 
-     * de acordo com o c骴igo passado.
-     * @param codigo string contendo o c骴igo do aeroporto desejado.
+     * Altera o texto dos componentes do formul谩rio e desabilita bot玫es de anterior e pr贸ximo caso o objeto dadosAtual seja o primeiro ou 煤ltimo da lista de aeroportos 
+     * de acordo com o c贸digo passado.
+     * @param codigo String contendo o c贸digo do aeroporto desejado.
      *  */
-	protected void showFlight(String codigo) throws Exception
+	protected void showFlight(String codigo)
 	{
 		try
 		{
