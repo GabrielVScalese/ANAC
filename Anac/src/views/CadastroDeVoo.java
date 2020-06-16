@@ -46,7 +46,7 @@ public class CadastroDeVoo extends JFrame {
 	private JTextField txtCodDestino;
 	
 	/**
-	 * Executa a aplicaÁ„o.
+	 * Executa a aplica√ß√£o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -112,7 +112,7 @@ public class CadastroDeVoo extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		
 		/**
-	     * Adiciona na lista de vÙos o objeto Destino contendo dados fornecidos pelo usu·rio a partir do cÛdigo do aeroporto.
+	     * Adiciona na lista de v√¥os o objeto Destino contendo dados fornecidos pelo usu√°rio a partir do c√≥digo do aeroporto.
 	     *  */
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -126,33 +126,33 @@ public class CadastroDeVoo extends JFrame {
 							txtNumeroVoo.getText().equals("") || txtCodDestino.getText().matches("[0-9]+") ||
 							txtCodDestino.getText().equals("") || txtCodDestino.getText().length() != 3)
 					{
-						JOptionPane.showMessageDialog(null, "Dado fornecido È inv·lido!");
+						JOptionPane.showMessageDialog(null, "Dado fornecido √© inv√°lido!");
 					}
 					else
 					{
 						if (!existsCode(txtCodAero.getText().toUpperCase()))
 						{
-							JOptionPane.showMessageDialog(null, "CÛdigo de aeroporto inexistente!");
+							JOptionPane.showMessageDialog(null, "C√≥digo de aeroporto inexistente!");
 						}
 						else
 						{
 							if (listaAeroportos.temVoo(txtCodAero.getText().toUpperCase(), Integer.parseInt(txtNumeroVoo.getText())))
-								JOptionPane.showMessageDialog(null, "N˙mero de vÙo existente!");
+								JOptionPane.showMessageDialog(null, "N√∫mero de v√¥o existente!");
 							else
 							{
 								if (txtCodAero.getText().toUpperCase().equals(txtCodDestino.getText().toUpperCase()))
-			                        JOptionPane.showMessageDialog(null, "CÛdigos de aeroportos iguais!");
+			                        JOptionPane.showMessageDialog(null, "C√≥digos de aeroportos iguais!");
 								else
 								{
 									if (!existsCode(txtCodDestino.getText().toUpperCase()))
 									{
-										JOptionPane.showMessageDialog(null, "CÛdigo de aeroporto de destino inexistente!");
+										JOptionPane.showMessageDialog(null, "C√≥digo de aeroporto de destino inexistente!");
 									}
 									else
 									{
 										Destino destino = new Destino (listaAeroportos.getAeroportoDestino(txtCodDestino.getText().toUpperCase()), Integer.parseInt(txtNumeroVoo.getText()));
 										listaAeroportos.inserirVoo(txtCodAero.getText().toUpperCase(), destino);
-										JOptionPane.showMessageDialog(null, "O VÙo " + destino.getNumeroVoo() + " foi inserido com sucesso!");
+										JOptionPane.showMessageDialog(null, "O V√¥o " + destino.getNumeroVoo() + " foi inserido com sucesso!");
 										System.out.println(listaAeroportos.getListaDeVoos(txtCodAero.getText().toUpperCase()));
 									}
 								}
@@ -210,17 +210,17 @@ public class CadastroDeVoo extends JFrame {
 	}
 	
 	/**
-     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
 	protected void initialize()
 	{
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("BrasÌlia", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("Bras√≠lia", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("S„o Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("S√£o Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			
 			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
@@ -270,9 +270,9 @@ public class CadastroDeVoo extends JFrame {
 	}
 	
 	/**
-     * Verifica se cÛdigo de aeroporto existe na lista de aeroportos.
-     * @param codigo String contedo o cÛdigo do aeroporto.
-     * @return Retorna true se cÛdigo existe ou false caso n„o exista na lista de aeroportos.
+     * Verifica se c√≥digo de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o c√≥digo do aeroporto.
+     * @return Retorna true se c√≥digo existe ou false caso n√£o exista na lista de aeroportos.
      *  */
 	protected boolean existsCode(String codigo)
 	{
