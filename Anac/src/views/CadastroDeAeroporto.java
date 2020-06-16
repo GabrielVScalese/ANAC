@@ -37,7 +37,7 @@ public class CadastroDeAeroporto extends JFrame {
 	private JButton btnAnteAero;
 
 	/**
-	 * Executa a aplicaÁ„o.
+	 * Executa a aplica√ß√£o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -101,7 +101,7 @@ public class CadastroDeAeroporto extends JFrame {
 		JButton btnCadastrar = new JButton("Cadastrar");
 		
 		/**
-	     * Adiciona na lista de aeroportos o objeto DadosAeroporto contendo dados fornecidos pelo usu·rio.
+	     * Adiciona na lista de aeroportos o objeto DadosAeroporto contendo dados fornecidos pelo usu√°rio.
 	     *  */
 		btnCadastrar.addMouseListener(new MouseAdapter() {
 			@Override
@@ -112,12 +112,12 @@ public class CadastroDeAeroporto extends JFrame {
 							stringContainsNumber(txtCidade.getText()) || txtCidade.getText().length() > 50 
 							|| txtCodigo.getText().equals("") || txtCidade.getText().equals(""))
 					{
-						JOptionPane.showMessageDialog(null, "CÛdigo de aeroporto ou cidade inv·lidos!");
+						JOptionPane.showMessageDialog(null, "C√≥digo de aeroporto ou cidade inv√°lidos!");
 					}
 					else
 					{
 						if (existsCode(txtCodigo.getText().toUpperCase()))
-							JOptionPane.showMessageDialog(null, "CÛdigo de aeroporto existente!");
+							JOptionPane.showMessageDialog(null, "C√≥digo de aeroporto existente!");
 						else
 						{
 							DadosAeroporto dados = new DadosAeroporto (txtCidade.getText(), txtCodigo.getText().toUpperCase());
@@ -227,17 +227,17 @@ public class CadastroDeAeroporto extends JFrame {
 	}
 
 	 /**
-     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     * Adiciona objetos Destino,ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
 	protected void initialize()
 	{
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("BrasÌlia", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("Bras√≠lia", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("S„o Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("S√£o Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			
 			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
@@ -288,7 +288,7 @@ public class CadastroDeAeroporto extends JFrame {
 	}
 		
 	 /**
-     * Altera o texto dos componentes do formul·rio e desabilita botıes de anterior e prÛximo caso o objeto dadosAtual seja o primeiro ou ˙ltimo da lista de aeroportos.
+     * Altera o texto dos componentes do formul√°rio e desabilita bot√µes de anterior e pr√≥ximo caso o objeto dadosAtual seja o primeiro ou √∫ltimo da lista de aeroportos.
      *  */
 	protected void showFlight()
 	{
@@ -312,9 +312,9 @@ public class CadastroDeAeroporto extends JFrame {
 	}
 	
 	/**
-     * Verifica se cÛdigo de aeroporto existe na lista de aeroportos.
-     * @param codigo String contedo o cÛdigo do aeroporto.
-     * @return Retorna true se cÛdigo existe ou false caso n„o exista na lista de aeroportos.
+     * Verifica se c√≥digo de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o c√≥digo do aeroporto.
+     * @return Retorna true se c√≥digo existe ou false caso n√£o exista na lista de aeroportos.
      *  */
 	protected boolean existsCode(String codigo)
 	{
@@ -337,9 +337,9 @@ public class CadastroDeAeroporto extends JFrame {
 	}
 	
 	/**
-     * Verifica se a string fornecida contÈm ou n„o valor n˙merico.
+     * Verifica se a string fornecida cont√©m ou n√£o valor n√∫merico.
      * @param s String contedo o texto fornecido.
-     * @return Retorna true se a string contÈm o valor n˙merico ou false caso a string n„o contenha valor numÈrico.
+     * @return Retorna true se a string cont√©m o valor n√∫merico ou false caso a string n√£o contenha valor num√©rico.
      *  */
 	protected boolean stringContainsNumber (String s)
 	{
