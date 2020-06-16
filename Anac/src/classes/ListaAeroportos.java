@@ -201,7 +201,7 @@ public class ListaAeroportos implements Cloneable
     	No aux = this.primeiro;
     	while (aux != null)
     	{
-    		if (aux.getDados().getCodigo().contentEquals(codAeroporto))
+    		if (aux.getDados().getCodigo().equals(codAeroporto))
     		{
     			aux.setVoos(listaVoos);
     			return;
@@ -247,7 +247,7 @@ public class ListaAeroportos implements Cloneable
     	while (aux != null)
     	{
     		if (aux.getDados().getCodigo().equals(codAeroporto))
-    	        return new No (aux.getDados());
+    	        return aux;
     		else
     			aux = aux.getProx();
     	}

@@ -112,7 +112,7 @@ public class Destino implements Cloneable
      */
     public String toString ()
     {
-        return "Código do aeroporto: " + getAeroportoDestino().getDados().getCodigo() + " e " + "Numero do voo: " + this.numeroVoo;
+        return "Código do aeroporto: " + getAeroportoDestino().getDados().getCodigo() + " e " + "Número do vôo: " + this.numeroVoo;
     }
 
 
