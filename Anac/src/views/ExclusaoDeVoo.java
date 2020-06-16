@@ -36,7 +36,7 @@ public class ExclusaoDeVoo extends JFrame {
 	private JButton btnAnteVoo;
 
 	/**
-	 * Executa a aplicação.
+	 * Executa a aplicaÃ§Ã£o.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -175,14 +175,14 @@ public class ExclusaoDeVoo extends JFrame {
 		JButton btnNewButton = new JButton("Excluir");
 		
 		/**
-	     * Exclui da lista de vôos o objeto Destino indicado pelo número do vôo e a partir do código do aeroporto.
+	     * Exclui da lista de vÃ´os o objeto Destino indicado pelo nÃºmero do vÃ´o e a partir do cÃ³digo do aeroporto.
 	     *  */
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (!txtNumeroVoo.getText().matches("[0-9]+") || txtNumeroVoo.getText().equals(""))
 				{
-					JOptionPane.showMessageDialog(null, "Número de vôo inválido!");
+					JOptionPane.showMessageDialog(null, "NÃºmero de vÃ´o invÃ¡lido!");
 				}
 				else
 				{
@@ -190,12 +190,12 @@ public class ExclusaoDeVoo extends JFrame {
 					{
 						if (!existsNumberFlight(codAero, Integer.parseInt(txtNumeroVoo.getText())))
 						{
-							JOptionPane.showMessageDialog(null, "Número de vôo inexistente!");
+							JOptionPane.showMessageDialog(null, "NÃºmero de vÃ´o inexistente!");
 						}
 						else
 						{
-							int result = JOptionPane.showConfirmDialog(null, "Você deseja excluir? O vôo será excluído",
-									"Exclusão de Voo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+							int result = JOptionPane.showConfirmDialog(null, "VocÃª deseja excluir? O vÃ´o serÃ¡ excluÃ­do",
+									"ExclusÃ£o de Voo", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
 							if (result == JOptionPane.YES_NO_OPTION) 
 							{
 								try
@@ -206,21 +206,21 @@ public class ExclusaoDeVoo extends JFrame {
 									{
 										txtIndice.setText("");
 										txtNumero.setText("");
-										JOptionPane.showMessageDialog(null, "O Vôo foi excluído com sucesso!");
+										JOptionPane.showMessageDialog(null, "O VÃ´o foi excluÃ­do com sucesso!");
 									}
 									else
 									{
 										destinoAtual = listaAeroportos.getDestinoDoInicio(codAero);
 										txtNumero.setText("");
 										showFlight();
-										JOptionPane.showMessageDialog(null, "O Vôo foi excluído com sucesso!");
+										JOptionPane.showMessageDialog(null, "O VÃ´o foi excluÃ­do com sucesso!");
 									}
 								}
 								catch (Exception error)
 								{}
 								
 							} else
-								JOptionPane.showMessageDialog(null, "Exclusão cancelada!");
+								JOptionPane.showMessageDialog(null, "ExclusÃ£o cancelada!");
 						}
 					}
 					catch (Exception error)
@@ -235,17 +235,17 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 
 	/**
-     * Adiciona objetos Destino e ListaVoos ao objeto ListaAeroportos.
+     * Adiciona objetos Destino, ListaVoos e DadosAeroporto ao objeto ListaAeroportos.
      *  */
 	protected void initialize(String codigoAeroporto) throws Exception
 	{
 		try
 		{
 			listaAeroportos = new ListaAeroportos();
-			DadosAeroporto dadosBsd = new DadosAeroporto("Brasília", "BSD");
+			DadosAeroporto dadosBsd = new DadosAeroporto("BrasÃ­lia", "BSD");
 			DadosAeroporto dadosCnf = new DadosAeroporto("Belo Horizonte", "CNF");
 			DadosAeroporto dadosGig = new DadosAeroporto("Rio de Janeiro", "GIG");
-			DadosAeroporto dadosGru = new DadosAeroporto("São Paulo", "GRU");
+			DadosAeroporto dadosGru = new DadosAeroporto("SÃ£o Paulo", "GRU");
 			DadosAeroporto dadosSsa = new DadosAeroporto("Salvador", "SSA");
 			
 			listaAeroportos.insiraAeroportoNoFim(dadosBsd);
@@ -298,10 +298,10 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 	
 	/**
-     * Verifica se o número de vôo existe na lista de vôos a partir do código do aeroporto.
-     * @param codigo String contedo o código do aeroporto.
-     * @param numeroVoo Integer contedo o número do vôo.
-     * @return Retorna true se número de vôo existe ou false caso não exista na lista de vôos.
+     * Verifica se o nÃºmero de vÃ´o existe na lista de vÃ´os a partir do cÃ³digo do aeroporto.
+     * @param codigo String contedo o cÃ³digo do aeroporto.
+     * @param numeroVoo Integer contedo o nÃºmero do vÃ´o.
+     * @return Retorna true se nÃºmero de vÃ´o existe ou false caso nÃ£o exista na lista de vÃ´os.
      *  */
 	protected boolean existsNumberFlight (String codigo, int numeroVoo) throws Exception
 	{
@@ -324,9 +324,9 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 	
 	/**
-     * Verifica se código de aeroporto existe na lista de aeroportos.
-     * @param codigo String contedo o código do aeroporto.
-     * @return Retorna true se código existe ou false caso não exista na lista de aeroportos.
+     * Verifica se cÃ³digo de aeroporto existe na lista de aeroportos.
+     * @param codigo String contedo o cÃ³digo do aeroporto.
+     * @return Retorna true se cÃ³digo existe ou false caso nÃ£o exista na lista de aeroportos.
      *  */
 	protected boolean existsCode(String codigo)
 	{
@@ -350,7 +350,7 @@ public class ExclusaoDeVoo extends JFrame {
 	}
 	
 	/**
-     * Altera o texto dos componentes do formulário e desabilita botões de anterior e próximo caso o objeto destinoAtual seja o primeiro ou último da lista de vôos.
+     * Altera o texto dos componentes do formulÃ¡rio e desabilita botÃµes de anterior e prÃ³ximo caso o objeto destinoAtual seja o primeiro ou Ãºltimo da lista de vÃ´os.
      *  */
 	protected void showFlight()
 	{
